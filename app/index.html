@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+	<meta charset="utf-8">
+
+	<title>АИС Агроклимат</title>
+	<meta name="description" content="">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<meta property="og:image" content="path/to/image.jpg">
+	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#000">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#000">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
+
+	<style>
+		body { opacity: 0; overflow-x: hidden; }
+		html { background-color: #fff; }
+	</style>
+
+</head>
+
+<body>
+	<header>
+
+		<div class="clearfix fixed-menu">
+				<div class="container">
+					<div class="col-md-12">
+
+						<div class="header-top">
+
+							<div class="header-left fl hidden-sm hidden-xs">
+								<div class="logo">
+									<img src="img/sniish-logo.png" class="logo-image fl" alt="Логотип СНИИСХ">
+									<div class="sniish_text fl">
+										<p>Ставропольский</p>
+										<p>НИИСХ</p>
+									</div>
+								</div>
+							</div> <!--header left-->
+
+							<div class="header-right fr">
+								<menu class="main-menu">
+									<li><a href="#">Домой</a></li>
+									<li><a href="#">Институт</a></li>
+									<li><a href="#">Метеостанции</a></li>
+									<li><a href="#">Описание</a></li>
+									<li><a href="#">Лицензия</a></li>
+									<li><a href="#">Помощь</a></li>
+									<li><a href="#">Выйти</a></li>
+								</menu>
+							</div><!--header right-->
+
+						</div> <!--header top-->
+					</div> <!--column-->
+				</div> <!--container-->
+			</div>
+		<br><br><br>
+		<div class="header-page-name">
+			<div class="overlay-image-layer">
+
+				<div class="container">
+					<div class="col-md-10 col-sm-7">
+						<div class="page-name--heading">
+							<p class="page-name--main-message">Главное меню</p>
+							<p class="page-name--description">здесь вы можете ознакомиться с нашими сервисами</p>
+						</div>
+					</div>
+					<div class="col-md-2 col-sm-5 hidden-xs">
+						<div class="temperature ">
+							<i id="loadingAnimation" class="fa fa-spinner fa-pulse fa-3x fa-fw padding-top-fix"></i>
+							<div class="hidden-content hidden">
+								<p class="current-temperature" >
+									<span id="temperatureValue">32</span>
+									<span id="estimateIn">℃</span>
+								</p>
+								<p class="current-temperature--city">
+									Ставрополь
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</header>
+
+	<section class="content">
+		<div class="content-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+
+						<div class="block-container clearfix">
+							<div class="container-heading content-header-color">
+								<h4>Справочная информация</h4>
+							</div>
+							<div class="container-elements clearfix">
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon economics-icon-hover">
+												<img src="img/icons/svg/economics.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии эконоики в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Экономика АПК
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon ground-icon-hover-color">
+												<img src="img/icons/svg/ground.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии почв в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Почвы
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon climate-icon-hover">
+												<img src="img/icons/svg/climate.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии почв в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Климат
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon decade-data-icon-hover">
+												<img src="img/icons/svg/decade_data.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии почв в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Декадные данные
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="content-container half-size">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+
+						<div class="block-container clearfix">
+							<div class="container-heading content-header-color">
+								<h4>Температура </h4>
+							</div>
+							<div class="container-elements clearfix">
+
+
+								<div class="col-md-6">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon">
+												<img src="img/icons/svg/deviations.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии эконоики в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Отклонения
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+								<div class="col-md-6">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon">
+												<img src="img/icons/svg/dynamic.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии почв в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Динамика
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+					<div class="col-md-6">
+
+						<div class="block-container clearfix">
+							<div class="container-heading content-header-color">
+								<h4>Осадки</h4>
+							</div>
+							<div class="container-elements clearfix">
+
+
+								<div class="col-md-6">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon">
+												<img src="img/icons/svg/deviations.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии эконоики в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Отклонения
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+								<div class="col-md-6">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon">
+												<img src="img/icons/svg/dynamic.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии почв в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Динамика
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>  <!--End half-size container-->
+
+		<div class="content-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+
+						<div class="block-container clearfix">
+							<div class="container-heading content-header-color">
+								<h4>Оперативная информация</h4>
+							</div>
+							<div class="container-elements clearfix">
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon economics-icon-hover">
+												<img src="img/icons/svg/gidro_coefficient.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии эконоики в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Гидротермический коэффициент
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon ground-icon-hover-color">
+												<img src="img/icons/svg/valter.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии почв в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Климадиаграмма Вальтера
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon climate-icon-hover">
+												<img src="img/icons/svg/climate_potential.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии почв в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Биоклиматический потенциал
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon decade-data-icon-hover">
+												<img src="img/icons/svg/mainland.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии почв в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Континентальность
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div> <!--end operative information-->
+
+
+		<div class="content-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+
+						<div class="block-container clearfix">
+							<div class="container-heading content-header-color">
+								<h4>Агроклиматические условия возделывания сельскохозяйственных культур</h4>
+							</div>
+							<div class="container-elements clearfix">
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon economics-icon-hover">
+												<img src="img/icons/svg/ozimaya_wheat.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии эконоики в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Озимая пшеница
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon ground-icon-hover-color">
+												<img src="img/icons/svg/yaroviye.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии почв в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Яровые колосовые
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon climate-icon-hover">
+												<img src="img/icons/svg/sunflower.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии почв в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Подсолнечник
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon decade-data-icon-hover">
+												<img src="img/icons/svg/corn.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии почв в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											Кукуруза
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div> <!--end agroclimate conditions-->
+
+
+		<div class="content-container ">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+
+						<div class="block-container clearfix last-container">
+							<div class="container-heading content-header-color">
+								<h4>Годы аналоги</h4>
+							</div>
+							<div class="container-elements clearfix">
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon economics-icon-hover">
+												<img src="img/icons/svg/temperature_compearison.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии эконоики в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											По температуре
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+								<div class="col-md-3">
+									<div class="container-elements-element clearfix">
+										<a href="#">
+
+											<div class="service-icon ground-icon-hover-color">
+												<img src="img/icons/svg/index_comparison.svg" class="svg">
+											</div>
+											<div class="service-description">
+												<p>
+													Получите оперативную информацию о текущем состоянии почв в крае
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="service-name">
+										<h5>
+											По индексу аридности
+										</h5>
+									</div>
+								</div> <!--end service element-->
+
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div> <!--end similar years-->
+
+
+	</section>
+	<footer>
+		<div class="top-footer--container">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h5 class="footer-heading" >Контакты</h5>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<div class="col-md-4">
+						<p class="footer-info--heading">
+							Адрес:
+						</p>
+						<p class="footer-info--description">
+							356241, Ставропольский край, Шпаковский район,
+							г. Михайловск, ул. Никонова, 49
+						</p>
+					</div>
+
+					<div class="col-md-4">
+						<p class="footer-info--heading">
+							Телефон:
+						</p>
+						<p class="footer-info--description">
+							<a href="tel:88652611773"> 8-8652-611-773</a> <br>
+							<a href="tel:88655323298"> 8-865-53-2-32-98</a>
+						</p>
+					</div>
+
+					<div class="col-md-4">
+						<p class="footer-info--heading">
+							Факс:
+						</p>
+						<p class="footer-info--description">
+							<a href="tel:8655323297"> 8-655-32-32-97</a>
+
+						</p>
+					</div>
+
+
+
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-12">
+						<p class="footer-info--heading">
+							При использовании материалов ИАС «Агроклиматический потенциал Ставропольского края» обязательно цитирование:
+						</p>
+						<p class="footer-info--description">
+							Информационно-аналитическая система «Агроклиматический потенциал Ставропольского края»/С.А.Антонов, Л.И.Желнакова, О.В. Петин.
+							– Электронный ресурс. – Михайловск: ГНУ Ставропольский НИИСХ Россельхозакадемии, 2010. Режим доступа: http://www.sniish.ru/climate/ Загл. с экрана.
+							Дата доступа: 01.07.2017
+						</p>
+					</div>
+				</div>
+
+			</div>
+
+		</div> <!--end top deader footer container -->
+
+		<div class="bottom-footer--container">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<p class="footer-info--heading">
+							Copyright 2017 © Лаборатория ГИС-технологий СНИИСХ
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<link rel="stylesheet" href="css/libs.css">
+	<link rel="stylesheet" href="css/main.min.css">
+	<script src="js/scripts.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title> АИС Агроклимат | Регистрация </title>
+    <meta name="description" content="">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:image" content="path/to/image.jpg">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#000">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#000">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+
+    <style>
+        body { opacity: 0; overflow-x: hidden; }
+        html { background-color: #fff; }
+    </style>
+
+</head>
+
+<body>
+<header>
+
+    <div class="header-page-name">
+        <div class="overlay-image-layer">
+
+            <div class="container">
+                <div class="col-md-10 col-sm-7">
+                    <div class="page-name--heading">
+                        <p class="page-name--main-message">Регистрация</p>
+                        <p class="page-name--description">это еще проще чем кажется</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-5 hidden-xs">
+                    <div class="temperature ">
+                        <i id="loadingAnimation" class="fa fa-spinner fa-pulse fa-3x fa-fw padding-top-fix"></i>
+                        <div class="hidden-content hidden">
+                            <p class="current-temperature" >
+                                <span id="temperatureValue">32</span>
+                                <span id="estimateIn">℃</span>
+                            </p>
+                            <p class="current-temperature--city">
+                                Ставрополь
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</header>
+
+<section class="content">
+    <div class="content-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="block-container clearfix last-container">
+                        <div class="container-heading content-header-color">
+                            <h4>Обязательные поля отмечены *</h4>
+                        </div>
+                        <form action="#" name="registration_form">
+                        <div class="container-elements authorization-container clearfix">
+
+                            <div class="col-md-6 ">
+                                <br>
+                                <h3>Информация о пользователе</h3>
+                                <br>
+                                    <div class="form-group">
+                                        <label for="usr">Логин <span class="important-field">*</span>:</label>
+                                        <input type="text" class="form-control" id="usr" placeholder="например: agronom">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="usr">Пароль <span class="important-field">*</span>:</label>
+                                        <input type="text" placeholder="подсказка: не испльзуйте простой пароль" class="form-control" id="usr">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="usr">Повторите пароль <span class="important-field">*</span>:</label>
+                                        <input type="text" placeholder="подсказка: не испльзуйте простой пароль" class="form-control" id="usr">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="usr">ФИО <span class="important-field">*</span>:</label>
+                                        <input type="text" placeholder="например: Иванов Иван Иванович" class="form-control" id="usr">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="usr">E-mail <span class="important-field">*</span>:</label>
+                                        <input type="text" placeholder="например: test@gmail.com" class="form-control" id="usr">
+                                    </div>
+
+                            </div>
+                            <div class="col-md-6  ">
+                                <br>
+                                <h3>Место работы/учебы</h3>
+                                <br>
+                                <div class="form-group">
+                                    <label for="usr">Название организации <span class="important-field">*</span>:</label>
+                                    <input type="text" placeholder="например: СНИИСХ" class="form-control" id="usr">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="usr">Сайт организации: </label>
+                                    <input type="text" placeholder="например: www.sniish.ru" class="form-control" id="usr">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="usr">Цель использования <span class="important-field">*</span>:</label>
+                                    <!--<input type="select" class="form-control" id="usr">-->
+                                    <select class="form-control" name="" id="">
+                                        <option value="1">Научная деятельность</option>
+                                        <option value="2" selected>Учебная деятельность</option>
+                                        <option value="3">Преподавательская работа</option>
+                                        <option value="4">Планирование производства</option>
+                                        <option value="5">Расширяю кругозор</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="usr">Напечатайте цифрами ответ, сколько будет три плюс 5 <span class="important-field">*</span>:</label>
+                                    <input type="number" class="form-control" id="usr">
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+</section>
+<footer>
+    <div class="top-footer--container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="footer-heading" >Контакты</h5>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <p class="footer-info--heading">
+                        Адрес:
+                    </p>
+                    <p class="footer-info--description">
+                        356241, Ставропольский край, Шпаковский район,
+                        г. Михайловск, ул. Никонова, 49
+                    </p>
+                </div>
+
+                <div class="col-md-4">
+                    <p class="footer-info--heading">
+                        Телефон:
+                    </p>
+                    <p class="footer-info--description">
+                        <a href="tel:88652611773"> 8-8652-611-773</a> <br>
+                        <a href="tel:88655323298"> 8-865-53-2-32-98</a>
+                    </p>
+                </div>
+
+                <div class="col-md-4">
+                    <p class="footer-info--heading">
+                        Факс:
+                    </p>
+                    <p class="footer-info--description">
+                        <a href="tel:8655323297"> 8-655-32-32-97</a>
+
+                    </p>
+                </div>
+
+
+
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="footer-info--heading">
+                        При использовании материалов ИАС «Агроклиматический потенциал Ставропольского края» обязательно цитирование:
+                    </p>
+                    <p class="footer-info--description">
+                        Информационно-аналитическая система «Агроклиматический потенциал Ставропольского края»/С.А.Антонов, Л.И.Желнакова, О.В. Петин.
+                        – Электронный ресурс. – Михайловск: ГНУ Ставропольский НИИСХ Россельхозакадемии, 2010. Режим доступа: http://www.sniish.ru/climate/ Загл. с экрана.
+                        Дата доступа: 01.07.2017
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div> <!--end top deader footer container -->
+
+    <div class="bottom-footer--container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="footer-info--heading">
+                        Copyright 2017 © Лаборатория ГИС-технологий СНИИСХ
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<link rel="stylesheet" href="css/libs.css">
+<link rel="stylesheet" href="css/main.min.css">
+<script src="js/scripts.min.js"></script>
+
+</body>
+</html>
