@@ -65,6 +65,19 @@ $(function() {
         $hiddenContent.removeClass('hidden');
     }
 
+    /*END WEATHER PART*/
+
+    /**
+    * Close warning window
+    *
+    **/
+
+    $('#closeWarningWindow').click( function(){
+        var self = $(this);
+        self.hide();
+        self.closest('.warning-message').slideUp(500);
+    });
+
 
 
 

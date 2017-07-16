@@ -50,6 +50,8 @@ h4
 .fr
 	float: right
 .main-menu
+	margin: 0
+	margin-top: 10px
 	li
 		display: inline-block
 		font-size: 16px
@@ -63,13 +65,20 @@ h4
 			padding-left: 18px
 
 .header-top
-	height: 80px
+	height: 60px
 
 .logo-image
-	padding: 10px 0
+	padding: 5px 0
+	padding-top: 10px
+	height: 60px
+.msh-image
+	margin-top: 15px
+	margin-right: 10px
+	margin-bottom: 2px
+	height: 40px
 
 .sniish_text
-	padding-top: 25px
+	padding-top: 10px
 	font-size: 16px
 	padding-left: 10px
 	p
@@ -111,6 +120,7 @@ h4
 	background-color: $content-header-color
 	border-top-left-radius: 5px
 	border-top-right-radius: 5px
+	color: $white
 	h4
 		padding: 30px 0
 		padding-left: 20px
@@ -140,6 +150,18 @@ h4
 					fill: $climate-icon-hover-color
 				&.decade-data-icon-hover
 					fill: $decade-data-icon-hover-color
+				&.temperature--hover-icon
+					fill: $temperature-hover-icon-color
+				&.deviation-hover-icon
+					fill: $deviations-hover-icon-color
+				&.climate-potential-hover-icon
+					fill: $climate-potential-hover-icon-color
+				&.sunflower-hover-icon
+					fill: $sunflower-hover-icon-color
+				&.corn-hover-icon
+					fill: $corn-hover-icon-color
+				&.same-years-hover-icon
+					fill: $same-years-hover-icon-color
 			.service-description
 				transform: translateY(-100px)
 .content-container
@@ -199,7 +221,6 @@ footer
 			color: $description-on-black-background-color
 
 .authorization-container
-	display: flex
 	//align-items: center
 	min-height: 300px
 input[type=text]
@@ -213,4 +234,28 @@ input[type=text]
 span
 	&.important-field
 		color: darkred
+.pl20
+	padding-left: 20px
+
+.modal-climate
+	padding: 20px !important
+
+.warning-message
+	//border: 2px solid grey
+	box-shadow: 1px 10px 10px grey
+	padding: 10px 20px
+	margin-top: 20px
+	background-color: #fff !important
+
+.close-icon
+	font-size: 1.4em
+	color: grey
+	cursor: pointer
+	padding: 10px
+	padding-top: 5px
+	padding-right: 5px
+a
+	&.not-link-style
+		color: black
+
 @import "media" // Всегда в конце

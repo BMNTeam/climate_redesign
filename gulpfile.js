@@ -37,6 +37,7 @@ gulp.task('css', function(){
 gulp.task('js', ['common-js'], function() {
 	return gulp.src([
 		'app/libs/jquery/dist/jquery.min.js',
+		'app/libs/bootstrap-grid/bootstrap.min.js',
 		'app/js/common.min.js', // Всегда в конце
 		])
 	.pipe(concat('scripts.min.js'))
