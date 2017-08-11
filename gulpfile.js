@@ -48,9 +48,8 @@ gulp.task('js', ['common-js'], function() {
 
 gulp.task('browser-sync', function() {
 	browserSync({
-		server: {
-			baseDir: 'app'
-		},
+		proxy: "agroclimate.new.design.com:81",
+
 		notify: false
 		// tunnel: true,
 		// tunnel: "projectmane", //Demonstration page: http://projectmane.localtunnel.me
@@ -72,6 +71,7 @@ gulp.task('watch', ['sass', 'js', 'browser-sync', 'css'], function() {
 	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
 	gulp.watch(['libs/**/*.css', 'libs/**/**/.css'], ['css']);
 	gulp.watch('app/*.html', browserSync.reload);
+	gulp.watch('app/*.php', browserSync.reload);
 });
 
 

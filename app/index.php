@@ -1,3 +1,32 @@
+<?php require_once('./include/DB_itit.php');
+
+
+//Select all services
+$selectServices = $db->query("SELECT * FROM ClimateData_administration");
+$servicesVisibility = ($selectServices->fetchAll(PDO::FETCH_ASSOC));
+
+
+function isVisibleBlock($servicesVisibility, $start, $end){
+    $is_visible = false;
+	for($i = $start; $i < $end; $i++ ) {
+		if( ! $servicesVisibility[$i][visible] == 0){
+			$is_visible = true;
+			return $is_visible;
+		}
+	}
+	return $is_visible;
+}
+
+$help_block_visible         = isVisibleBlock($servicesVisibility, 0, 4);
+$temperature_block_visible  = isVisibleBlock($servicesVisibility, 4, 6);
+$precipitations_visible     = isVisibleBlock($servicesVisibility, 6, 8);
+$operative_info_visible     = isVisibleBlock($servicesVisibility, 8, 12);
+$conditions_block_visible   = isVisibleBlock($servicesVisibility, 12, 16);
+$same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -147,14 +176,14 @@
 				<div class="row">
 					<div class="col-md-12">
 
-						<div class="block-container clearfix">
+						<div class="block-container clearfix  <?php echo(( ! $help_block_visible) ? 'hidden' : ''); ?>">
 							<div class="container-heading content-header-color">
 								<h4>Справочная информация</h4>
 							</div>
 							<div class="container-elements clearfix">
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo(($servicesVisibility[0][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="#">
 
@@ -259,7 +288,7 @@
 				<div class="row">
 					<div class="col-md-6">
 
-						<div class="block-container clearfix">
+						<div class="block-container clearfix <?php echo(( ! $temperature_block_visible) ? 'hidden' : '')  ; ?>">
 							<div class="container-heading content-header-color">
 								<h4>Температура </h4>
 							</div>
@@ -268,7 +297,7 @@
 
 								<div class="col-md-6">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="/analyze_t.php">
 
 											<div class="service-icon temperature--hover-icon">
 												<img src="img/icons/svg/deviations.svg" class="svg">
@@ -290,7 +319,7 @@
 
 								<div class="col-md-6">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="/temperature_dynamic.php">
 
 											<div class="service-icon temperature--hover-icon">
 												<img src="img/icons/svg/dynamic.svg" class="svg">
@@ -319,7 +348,7 @@
 
 					<div class="col-md-6">
 
-						<div class="block-container clearfix">
+						<div class="block-container clearfix <?php echo(( ! $precipitations_visible ) ? 'hidden' : '')  ; ?>">
 							<div class="container-heading content-header-color">
 								<h4>Осадки</h4>
 							</div>
@@ -328,7 +357,7 @@
 
 								<div class="col-md-6">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="/analyze_p.php">
 
 											<div class="service-icon deviation-hover-icon">
 												<img src="img/icons/svg/deviations.svg" class="svg">
@@ -350,7 +379,7 @@
 
 								<div class="col-md-6">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="/precip_dynamic.php">
 
 											<div class="service-icon deviation-hover-icon">
 												<img src="img/icons/svg/dynamic.svg" class="svg">
@@ -385,7 +414,7 @@
 				<div class="row">
 					<div class="col-md-12">
 
-						<div class="block-container clearfix">
+						<div class="block-container clearfix <?php echo(( ! $operative_info_visible ) ? 'hidden' : '')  ; ?>">
 							<div class="container-heading content-header-color">
 								<h4>Оперативная информация</h4>
 							</div>
@@ -394,7 +423,7 @@
 
 								<div class="col-md-3">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="/gtk.php">
 
 											<div class="service-icon economics-icon-hover">
 												<img src="img/icons/svg/gidro_coefficient.svg" class="svg">
@@ -416,7 +445,7 @@
 
 								<div class="col-md-3">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="/walter.php">
 
 											<div class="service-icon ground-icon-hover-color">
 												<img src="img/icons/svg/valter.svg" class="svg">
@@ -438,7 +467,7 @@
 
 								<div class="col-md-3">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="/bcp.php">
 
 											<div class="service-icon climate-potential-hover-icon">
 												<img src="img/icons/svg/climate_potential.svg" class="svg">
@@ -461,7 +490,7 @@
 
 								<div class="col-md-3">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="/continent.php">
 
 											<div class="service-icon decade-data-icon-hover">
 												<img src="img/icons/svg/mainland.svg" class="svg">
@@ -497,7 +526,7 @@
 				<div class="row">
 					<div class="col-md-12">
 
-						<div class="block-container clearfix">
+						<div class="block-container clearfix <?php echo(( ! $conditions_block_visible) ? 'hidden' : '')  ; ?>">
 							<div class="container-heading content-header-color">
 								<h4>Агроклиматические условия возделывания сельскохозяйственных культур</h4>
 							</div>
@@ -506,7 +535,7 @@
 
 								<div class="col-md-3">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="/ylanova.php">
 
 											<div class="service-icon economics-icon-hover">
 												<img src="img/icons/svg/ozimaya_wheat.svg" class="svg">
@@ -528,7 +557,7 @@
 
 								<div class="col-md-3">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="sapojnikova.php">
 
 											<div class="service-icon ground-icon-hover-color">
 												<img src="img/icons/svg/yaroviye.svg" class="svg">
@@ -550,7 +579,7 @@
 
 								<div class="col-md-3">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="/melnik.php">
 
 											<div class="service-icon sunflower-hover-icon">
 												<img src="img/icons/svg/sunflower.svg" class="svg">
@@ -573,7 +602,7 @@
 
 								<div class="col-md-3">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="/chirkov.php">
 
 											<div class="service-icon corn-hover-icon">
 												<img src="img/icons/svg/corn.svg" class="svg">
@@ -609,7 +638,7 @@
 				<div class="row">
 					<div class="col-md-12">
 
-						<div class="block-container clearfix last-container">
+						<div class="block-container clearfix last-container <?php echo(( ! $same_years_block_visible ) ? 'hidden' : '')  ; ?>">
 							<div class="container-heading content-header-color">
 								<h4>Годы аналоги</h4>
 							</div>
@@ -618,7 +647,7 @@
 
 								<div class="col-md-3">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="analog_tp.php">
 
 											<div class="service-icon same-years-hover-icon">
 												<img src="img/icons/svg/temperature_compearison.svg" class="svg">
@@ -640,7 +669,7 @@
 
 								<div class="col-md-3">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="analog_demarton.php">
 
 											<div class="service-icon same-years-hover-icon">
 												<img src="img/icons/svg/index_comparison.svg" class="svg">
@@ -672,68 +701,4 @@
 
 
 	</section>
-	<footer>
-		<div class="top-footer--container">
-			<div class="container">
-				<br>
-
-				<div class="row">
-
-					<div class="col-md-4">
-						<p class="footer-info--heading">
-							Адрес:
-						</p>
-						<p class="footer-info--description">
-							356241, Ставропольский край, Шпаковский район,
-							г. Михайловск, ул. Никонова, 49
-						</p>
-					</div>
-
-					<div class="col-md-4">
-						<p class="footer-info--heading">
-							Телефон:
-						</p>
-						<p class="footer-info--description">
-							<a href="tel:88652611773"> 8-8652-611-773</a> <br>
-							<a href="tel:88655323298"> 8-865-53-2-32-98</a>
-						</p>
-					</div>
-
-					<div class="col-md-4">
-						<p class="footer-info--heading">
-							Факс:
-						</p>
-						<p class="footer-info--description">
-							<a href="tel:8655323297"> 8-655-32-32-97</a>
-
-						</p>
-					</div>
-
-
-
-				</div>
-
-			</div>
-
-		</div> <!--end top deader footer container -->
-
-		<div class="bottom-footer--container">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<p class="footer-info--heading">
-							Copyright 2017 © Лаборатория ГИС-технологий СНИИСХ
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-
-	<link rel="stylesheet" href="css/libs.css">
-	<link rel="stylesheet" href="css/main.min.css">
-	<script src="js/scripts.min.js"></script>
-
-</body>
-</html>
+	<?php include_once ('./include/footer.php'); ?>

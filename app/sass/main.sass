@@ -136,6 +136,7 @@ h4
 	background-color: $white
 	border-bottom-left-radius: 5px
 	border-bottom-right-radius: 5px
+	overflow: hidden
 	.container-elements-element
 		margin-top: 30px
 		overflow: hidden
@@ -203,6 +204,7 @@ h4
 	background-color: #fff
 	position: fixed
 	z-index: 9999
+	overflow: hidden
 .padding-top-fix
 	margin-top: 10px
 .last-container
@@ -274,4 +276,27 @@ div.content
 
 .get-data-form--heading
 	margin-top: 50px
+
+.full-screen-height
+	min-height: 75vh
 @import "media" // Всегда в конце
+
+.select-al-month--button
+	outline: transparent !important
+.legend
+	font-family: 'roboto-light'
+
+.save-visibility--button
+	margin-left: 40px
+
+.notification-message
+	width: 250px
+	height: 150px
+	position: fixed
+	right: 0
+	top: 0
+	padding: 10px 0
+	transition: all ease-in .4s
+	transform: translateY(-50px)
+	&.active
+		transform: translateY(0px)
