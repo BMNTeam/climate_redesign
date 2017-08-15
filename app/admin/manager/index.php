@@ -1,9 +1,13 @@
-<?php require_once('./../../include/DB_itit.php');
+<?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL ^ E_NOTICE);
+require_once('./../../include/DB_itit.php');
 
 
 //Select all services
 $selectServices = $db->query("SELECT * FROM ClimateData_administration");
 $servicesVisibility = ($selectServices->fetchAll(PDO::FETCH_ASSOC));
+
 ?>
 <html lang="ru">
 
@@ -217,7 +221,7 @@ $servicesVisibility = ($selectServices->fetchAll(PDO::FETCH_ASSOC));
 										<a href="#">
 
 											<div class="service-icon decade-data-icon-hover">
-												<img src="./../../img/icons/svg/decade_data.svg" class="svg">
+												<img src="./../../img/icons/svg/clear_steam.svg" class="svg">
 											</div>
 											<div class="service-description">
 												<p>
@@ -228,7 +232,7 @@ $servicesVisibility = ($selectServices->fetchAll(PDO::FETCH_ASSOC));
 									</div>
 									<div class="service-name">
 										<h5>
-											Декадные данные
+											Чистые пары
 										</h5>
                                         <input name="<?php echo($servicesVisibility[3]['service_id']) ?>" type="checkbox" <?php ($servicesVisibility[3]['visible'] == 1)?print_r('checked') : print_r('') ?>> Отображать
 									</div>

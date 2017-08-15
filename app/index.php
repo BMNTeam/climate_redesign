@@ -183,9 +183,9 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 							<div class="container-elements clearfix">
 
 
-								<div class="col-md-3 <?php echo(($servicesVisibility[0][visible]) ? 'hidden' : ''); ?>">
+								<div class="col-md-3 <?php echo(( ! $servicesVisibility[0][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="economy.php">
 
 											<div class="service-icon economics-icon-hover">
 												<img src="img/icons/svg/economics.svg" class="svg">
@@ -205,9 +205,9 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 								</div> <!--end service element-->
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo((!$servicesVisibility[1][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="soil.php">
 
 											<div class="service-icon ground-icon-hover-color">
 												<img src="img/icons/svg/ground.svg" class="svg">
@@ -227,7 +227,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 								</div> <!--end service element-->
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo(( ! $servicesVisibility[2][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="#">
 
@@ -250,12 +250,12 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo((! $servicesVisibility[3][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="#">
 
 											<div class="service-icon decade-data-icon-hover">
-												<img src="img/icons/svg/decade_data.svg" class="svg">
+												<img src="img/icons/svg/clear_steam.svg" class="svg">
 											</div>
 											<div class="service-description">
 												<p>
@@ -266,7 +266,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 									</div>
 									<div class="service-name">
 										<h5>
-											Декадные данные
+											Чистые пары
 										</h5>
 									</div>
 								</div> <!--end service element-->
@@ -295,7 +295,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 							<div class="container-elements clearfix">
 
 
-								<div class="col-md-6">
+								<div class="col-md-6 <?php echo(( ! $servicesVisibility[4][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="/analyze_t.php">
 
@@ -317,7 +317,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 								</div> <!--end service element-->
 
 
-								<div class="col-md-6">
+								<div class="col-md-6 <?php echo(( ! $servicesVisibility[5][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="/temperature_dynamic.php">
 
@@ -355,7 +355,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 							<div class="container-elements clearfix">
 
 
-								<div class="col-md-6">
+								<div class="col-md-6 <?php echo(( ! $servicesVisibility[6][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="/analyze_p.php">
 
@@ -377,7 +377,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 								</div> <!--end service element-->
 
 
-								<div class="col-md-6">
+								<div class="col-md-6 <?php echo((! $servicesVisibility[7][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="/precip_dynamic.php">
 
@@ -421,7 +421,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 							<div class="container-elements clearfix">
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo((!$servicesVisibility[8][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="/gtk.php">
 
@@ -443,7 +443,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 								</div> <!--end service element-->
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo((!$servicesVisibility[9][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="/walter.php">
 
@@ -465,7 +465,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 								</div> <!--end service element-->
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo((!$servicesVisibility[10][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="/bcp.php">
 
@@ -488,7 +488,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo((!$servicesVisibility[11][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="/continent.php">
 
@@ -533,7 +533,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 							<div class="container-elements clearfix">
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo((!$servicesVisibility[12][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="/ylanova.php">
 
@@ -555,7 +555,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 								</div> <!--end service element-->
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo((!$servicesVisibility[13][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="sapojnikova.php">
 
@@ -577,7 +577,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 								</div> <!--end service element-->
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo((!$servicesVisibility[14][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="/melnik.php">
 
@@ -600,7 +600,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo((!$servicesVisibility[15][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="/chirkov.php">
 
@@ -645,7 +645,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 							<div class="container-elements clearfix">
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo((!$servicesVisibility[16][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="analog_tp.php">
 
@@ -667,7 +667,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 								</div> <!--end service element-->
 
 
-								<div class="col-md-3">
+								<div class="col-md-3 <?php echo((!$servicesVisibility[17][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
 										<a href="analog_demarton.php">
 
