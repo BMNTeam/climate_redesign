@@ -229,7 +229,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 								<div class="col-md-3 <?php echo(( ! $servicesVisibility[2][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="climate_info.php">
 
 											<div class="service-icon climate-icon-hover">
 												<img src="img/icons/svg/climate.svg" class="svg">
