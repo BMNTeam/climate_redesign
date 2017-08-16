@@ -1,72 +1,72 @@
-$(function () {
+$(function() {
 
 
-  updateWeather('stavropol');
+    updateWeather('stavropol');
 
-  function updateWeather(city) {
-    if (localStorage.getItem('weatherInfo') === null) {
-      getWeather(city);
-      return;
+    function updateWeather( city ) {
+        if(localStorage.getItem('weatherInfo') === null ) {
+            getWeather(city);
+            return;
+        }
+
+        var weatherInfo =  JSON.parse( localStorage.getItem('weatherInfo') );
+        var currentTime = Date.now();
+        var storedTime = weatherInfo.createdTime;
+        var differenceInMinuter = (currentTime - storedTime)/1000/60;
+        var temperature = weatherInfo.temperature;
+
+        if( differenceInMinuter >= 10) {
+            getWeather( city )
+        } else {
+            setWetherToUi( temperature )
+        }
     }
 
-    var weatherInfo = JSON.parse(localStorage.getItem('weatherInfo'));
-    var currentTime = Date.now();
-    var storedTime = weatherInfo.createdTime;
-    var differenceInMinuter = (currentTime - storedTime) / 1000 / 60;
-    var temperature = weatherInfo.temperature;
+    function getWeather(city) {
 
-    if (differenceInMinuter >= 10) {
-      getWeather(city)
-    } else {
-      setWetherToUi(temperature)
+        const apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=' + city;
+        $.ajax({
+            method: "GET",
+            url: apiUrl,
+            data: {
+                APPID: '7324eaad1a529491591f30002974503a',
+                units: 'metric'
+            }
+
+        })
+            .done(function (response) {
+                var temperature = response.main.temp;
+                var weatherInfo = {};
+
+                weatherInfo.createdTime = Date.now();
+                weatherInfo.temperature = temperature;
+
+                console.dir(response);
+                localStorage.setItem('weatherInfo', JSON.stringify(weatherInfo));
+
+                setWetherToUi(temperature);
+            })
+            .fail(function (error) {
+                console.dir(error);
+            })
     }
-  }
-
-  function getWeather(city) {
-
-    const apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=' + city;
-    $.ajax({
-      method: "GET",
-      url: apiUrl,
-      data: {
-        APPID: '7324eaad1a529491591f30002974503a',
-        units: 'metric'
-      }
-
-    })
-      .done(function (response) {
-        var temperature = response.main.temp;
-        var weatherInfo = {};
-
-        weatherInfo.createdTime = Date.now();
-        weatherInfo.temperature = temperature;
-
-        console.dir(response);
-        localStorage.setItem('weatherInfo', JSON.stringify(weatherInfo));
-
-        setWetherToUi(temperature);
-      })
-      .fail(function (error) {
-        console.dir(error);
-      })
-  }
 
 
-  function setWetherToUi(weather) {
-    var $loadingAnimation = $('#loadingAnimation'),
-      $hiddenContent = $('.hidden-content'),
-      $temperature = $('#temperatureValue'),
-      $city = $('#current-temperature--city');
 
-    $temperature.text(weather);
+    function setWetherToUi ( weather ) {
+        var $loadingAnimation = $('#loadingAnimation'),
+            $hiddenContent = $('.hidden-content'),
+            $temperature = $('#temperatureValue'),
+            $city = $('#current-temperature--city');
 
-    $loadingAnimation.hide();
-    $hiddenContent.removeClass('hidden');
-  }
+        $temperature.text( weather);
 
-  /*END WEATHER PART*/
+        $loadingAnimation.hide();
+        $hiddenContent.removeClass('hidden');
+    }
 
-  // Select or deselect all months on some pages
+    /*END WEATHER PART*/
+
   $('.select-al-month--button').click(function () {
     var self = $(this);
     if (self.hasClass('checked')) {
@@ -79,13 +79,13 @@ $(function () {
       $('input[type=checkbox]').prop('checked', true);
     }
 
-  });
+  })
 
 
   //AJAX request to change visibility state
   var formVisibleServices = document.querySelector('#saveServicesVisibility');
-  if(formVisibleServices !== undefined && formVisibleServices !== null ){
-    formVisibleServices.addEventListener('submit', function(e){
+  if(formVisibleServices !== undefined && formVisibleServices !== null ) {
+    formVisibleServices.addEventListener('submit', function (e) {
       e.preventDefault();
 
       // set form variables
@@ -94,16 +94,16 @@ $(function () {
       var formData = new FormData(formVisibleServices);
 
       // Action will be done after successful submit message
-      function reqListener () {
+      function reqListener() {
         var notificationElement = document.getElementById('notificationMessage');
         notificationElement.className += ' active';
-        setTimeout( function(){
+        setTimeout(function () {
           notificationElement.className = notificationElement.className.replace('active', '')
         }, 2000)
       }
 
       // If everything ok then do this function
-      xhr.addEventListener( 'load', reqListener );
+      xhr.addEventListener('load', reqListener);
       xhr.open("POST", url);
       xhr.send(formData);
     });
@@ -125,35 +125,37 @@ $(function () {
 
 
 
-  //Fix SVG images, make them inline
-  jQuery('img.svg').each(function () {
-    var $img = jQuery(this);
-    var imgID = $img.attr('id');
-    var imgClass = $img.attr('class');
-    var imgURL = $img.attr('src');
 
-    jQuery.get(imgURL, function (data) {
-      // Get the SVG tag, ignore the rest
-      var $svg = jQuery(data).find('svg');
 
-      // Add replaced image's ID to the new SVG
-      if (typeof imgID !== 'undefined') {
-        $svg = $svg.attr('id', imgID);
-      }
-      // Add replaced image's classes to the new SVG
-      if (typeof imgClass !== 'undefined') {
-        $svg = $svg.attr('class', imgClass + ' replaced-svg');
-      }
 
-      // Remove any invalid XML tags as per http://validator.w3.org
-      $svg = $svg.removeAttr('xmlns:a');
+    jQuery('img.svg').each(function(){
+        var $img = jQuery(this);
+        var imgID = $img.attr('id');
+        var imgClass = $img.attr('class');
+        var imgURL = $img.attr('src');
 
-      // Replace image with new SVG
-      $img.replaceWith($svg);
+        jQuery.get(imgURL, function(data) {
+            // Get the SVG tag, ignore the rest
+            var $svg = jQuery(data).find('svg');
 
-    }, 'xml');
+            // Add replaced image's ID to the new SVG
+            if(typeof imgID !== 'undefined') {
+                $svg = $svg.attr('id', imgID);
+            }
+            // Add replaced image's classes to the new SVG
+            if(typeof imgClass !== 'undefined') {
+                $svg = $svg.attr('class', imgClass+' replaced-svg');
+            }
 
-  });
+            // Remove any invalid XML tags as per http://validator.w3.org
+            $svg = $svg.removeAttr('xmlns:a');
+
+            // Replace image with new SVG
+            $img.replaceWith($svg);
+
+        }, 'xml');
+
+    });
 
 });
 
