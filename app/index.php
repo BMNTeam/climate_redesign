@@ -252,7 +252,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 								<div class="col-md-3 <?php echo((! $servicesVisibility[3][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="#">
+										<a href="clear_steam.php">
 
 											<div class="service-icon decade-data-icon-hover">
 												<img src="img/icons/svg/clear_steam.svg" class="svg">
@@ -297,7 +297,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 								<div class="col-md-6 <?php echo(( ! $servicesVisibility[4][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="/analyze_t.php">
+										<a href="analyze_t.php">
 
 											<div class="service-icon temperature--hover-icon">
 												<img src="img/icons/svg/deviations.svg" class="svg">
@@ -319,7 +319,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 								<div class="col-md-6 <?php echo(( ! $servicesVisibility[5][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="/temperature_dynamic.php">
+										<a href="temperature_dynamic.php">
 
 											<div class="service-icon temperature--hover-icon">
 												<img src="img/icons/svg/dynamic.svg" class="svg">
@@ -357,7 +357,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 								<div class="col-md-6 <?php echo(( ! $servicesVisibility[6][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="/analyze_p.php">
+										<a href="analyze_p.php">
 
 											<div class="service-icon deviation-hover-icon">
 												<img src="img/icons/svg/deviations.svg" class="svg">
@@ -379,7 +379,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 								<div class="col-md-6 <?php echo((! $servicesVisibility[7][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="/precip_dynamic.php">
+										<a href="precip_dynamic.php">
 
 											<div class="service-icon deviation-hover-icon">
 												<img src="img/icons/svg/dynamic.svg" class="svg">
@@ -423,7 +423,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 								<div class="col-md-3 <?php echo((!$servicesVisibility[8][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="/gtk.php">
+										<a href="gtk.php">
 
 											<div class="service-icon economics-icon-hover">
 												<img src="img/icons/svg/gidro_coefficient.svg" class="svg">
@@ -445,7 +445,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 								<div class="col-md-3 <?php echo((!$servicesVisibility[9][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="/walter.php">
+										<a href="walter.php">
 
 											<div class="service-icon ground-icon-hover-color">
 												<img src="img/icons/svg/valter.svg" class="svg">
@@ -467,7 +467,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 								<div class="col-md-3 <?php echo((!$servicesVisibility[10][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="/bcp.php">
+										<a href="bcp.php">
 
 											<div class="service-icon climate-potential-hover-icon">
 												<img src="img/icons/svg/climate_potential.svg" class="svg">
@@ -490,7 +490,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 								<div class="col-md-3 <?php echo((!$servicesVisibility[11][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="/continent.php">
+										<a href="continent.php">
 
 											<div class="service-icon decade-data-icon-hover">
 												<img src="img/icons/svg/mainland.svg" class="svg">
@@ -535,7 +535,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 								<div class="col-md-3 <?php echo((!$servicesVisibility[12][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="/ylanova.php">
+										<a href="ylanova.php">
 
 											<div class="service-icon economics-icon-hover">
 												<img src="img/icons/svg/ozimaya_wheat.svg" class="svg">
@@ -579,7 +579,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 								<div class="col-md-3 <?php echo((!$servicesVisibility[14][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="/melnik.php">
+										<a href="melnik.php">
 
 											<div class="service-icon sunflower-hover-icon">
 												<img src="img/icons/svg/sunflower.svg" class="svg">
@@ -602,7 +602,7 @@ $same_years_block_visible   = isVisibleBlock($servicesVisibility, 16, 18);
 
 								<div class="col-md-3 <?php echo((!$servicesVisibility[15][visible]) ? 'hidden' : ''); ?>">
 									<div class="container-elements-element clearfix">
-										<a href="/chirkov.php">
+										<a href="chirkov.php">
 
 											<div class="service-icon corn-hover-icon">
 												<img src="img/icons/svg/corn.svg" class="svg">

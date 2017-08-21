@@ -83,9 +83,8 @@ $servicesVisibility = ($selectServices->fetchAll(PDO::FETCH_ASSOC));
 
 							<div class="header-right fr">
 								<menu class="main-menu">
+									<li><a href="../index.php" class="special-link">Редактировать базу</a></li>
 									<li><a href="#">Меню</a></li>
-                                    <li><a href="#">Метеостанции края</a></li>
-                                    <li><a href="#">Помощь</a></li>
                                     <li><a href="#">Выйти</a></li>
                                     <input type="submit" value="Сохранить" class="btn btn-success save-visibility--button" id="saveVisibilityStateButton">
                                     <div class="notification-message" id="notificationMessage">

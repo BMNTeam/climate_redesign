@@ -269,7 +269,7 @@ include_once( './include/header.php' );
                                            <td align="center" valign="center"><span class="grey">10,1</span></td>
                                        </tr>
                                        <tr valign="center" bgcolor="#FFFFFF"><!-- строка -->
-                                           <td align="center" valign="center"><span class="grey">из них: пшеница/span&gt;</span></td>
+                                           <td align="center" valign="center"><span class="grey">из них: пшеница</span></td>
                                            <td align="center" valign="center"><span class="grey">20,1</span></td>
                                            <td align="center" valign="center"><span class="grey">18,5</span></td>
                                            <td align="center" valign="center"><span class="grey">44,5</span></td>

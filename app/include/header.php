@@ -41,7 +41,7 @@
 
 					<div class="header-right fr">
 						<menu class="main-menu">
-							<li><a href="/index.php">Меню</a></li>
+							<li><a href="index.php">Меню</a></li>
 							<li><a href="#">Метеостанции края</a></li>
 							<li><a href="#">Помощь</a></li>
 							<li><a href="#">Выйти</a></li>

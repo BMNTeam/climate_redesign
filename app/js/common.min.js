@@ -108,6 +108,18 @@ $(function() {
       xhr.send(formData);
     });
   }
+  // END AJAX request to change visibility state
+
+
+
+  //Registration form login as manager or administrator link
+  $('#additionalAccessButton').click(function () {
+    $(this).remove();
+    $('#additionalAccessLinks').removeClass('hidden');
+
+  });
+
+  //END Registration form
 
 
 
@@ -123,40 +135,121 @@ $(function() {
 
 
 
+  //Administration section
+  $('.input-editable').keyup(function (e) {
+    var self = $(this);
+    var typedText = self.val();
+    var lastSymbol = typedText.slice(typedText.length - 1, typedText.length);
+
+    var patt = new RegExp(",");
+    var word = new RegExp(/\D/);
+
+    if (patt.test(typedText)) {
+      self.val(typedText.replace(',', '.'));
+    } else if (word.test(lastSymbol) && lastSymbol != '-' && lastSymbol != '.') {
+      self.val(typedText.slice(0, typedText.length - 1))
+    }
+
+
+  });
+
+  $('#edit_checkbox').click(function () {
+
+    $('#year_to_edit').toggleClass('hidden');
+
+
+    if ($('.year-input').attr('disabled')) {
+      $('.year-input').removeAttr('disabled');
+    }
+    else {
+      $('.year-input').attr('disabled', 'disabled');
+    }
+  });
+
+  var checkbox = document.getElementById('edit_checkbox');
+  if (checkbox !== undefined && checkbox !== null){
+    if (document.getElementById('edit_checkbox').checked == true) {
+      $('#year_to_edit').removeClass('hidden');
+      $('.year-input').attr('disabled', 'disabled');
+    }
+  }
+
+
+
+  $('#saveResults').click(function (event) {
+    var hasError = false;
+
+    $('.input-editable').each(function (index) {
+      if ($(this).val() == '') {
+        $(this).val('NULL');
+      }
+    })
+
+    if (hasError) {
+      alert("Поля не должны быть пустыми");
+      event.preventDefault();
+    }
+  });
+  // END Administration section
 
 
 
 
 
-    jQuery('img.svg').each(function(){
-        var $img = jQuery(this);
-        var imgID = $img.attr('id');
-        var imgClass = $img.attr('class');
-        var imgURL = $img.attr('src');
 
-        jQuery.get(imgURL, function(data) {
-            // Get the SVG tag, ignore the rest
-            var $svg = jQuery(data).find('svg');
 
-            // Add replaced image's ID to the new SVG
-            if(typeof imgID !== 'undefined') {
-                $svg = $svg.attr('id', imgID);
-            }
-            // Add replaced image's classes to the new SVG
-            if(typeof imgClass !== 'undefined') {
-                $svg = $svg.attr('class', imgClass+' replaced-svg');
-            }
 
-            // Remove any invalid XML tags as per http://validator.w3.org
-            $svg = $svg.removeAttr('xmlns:a');
 
-            // Replace image with new SVG
-            $img.replaceWith($svg);
 
-        }, 'xml');
 
-    });
+
+
+
+  jQuery('img.svg').each(function () {
+    var $img = jQuery(this);
+    var imgID = $img.attr('id');
+    var imgClass = $img.attr('class');
+    var imgURL = $img.attr('src');
+
+    jQuery.get(imgURL, function (data) {
+      // Get the SVG tag, ignore the rest
+      var $svg = jQuery(data).find('svg');
+
+      // Add replaced image's ID to the new SVG
+      if (typeof imgID !== 'undefined') {
+        $svg = $svg.attr('id', imgID);
+      }
+      // Add replaced image's classes to the new SVG
+      if (typeof imgClass !== 'undefined') {
+        $svg = $svg.attr('class', imgClass + ' replaced-svg');
+      }
+
+      // Remove any invalid XML tags as per http://validator.w3.org
+      $svg = $svg.removeAttr('xmlns:a');
+
+      // Replace image with new SVG
+      $img.replaceWith($svg);
+
+    }, 'xml');
+
+  });
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
