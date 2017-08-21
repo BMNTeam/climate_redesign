@@ -6,9 +6,11 @@
  * Time: 13:09
  */
 
+// Include directory path
+$INCLUDE_ROOT = dirname(__FILE__);
 
 //require_once('DB_itit.php');
-require_once('./classes/average.php');
+require_once($INCLUDE_ROOT.'/../admin/classes/average.php');
 
 
 //On form loading query ---- maybe it's just for test purposes)))

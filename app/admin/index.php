@@ -1,9 +1,6 @@
 <?php
 
-
 require_once('../include/databaseConnection.php');
-
-
 
 ?>
 <!DOCTYPE html>
@@ -52,7 +49,7 @@ require_once('../include/databaseConnection.php');
                             <a href="http://www.mshsk.ru/" class="not-link-style">
                                 <div class="logo">
 
-                                    <img src="/../img/mshsk.png" class="msh-image fl" alt="Логотип СНИИСХ">
+                                    <img src="../img/mshsk.png" class="msh-image fl" alt="Логотип СНИИСХ">
                                     <div class="sniish_text msh_text fl">
                                         <p>Министерство селького</p>
                                         <p>хозяйства края</p>
@@ -64,7 +61,7 @@ require_once('../include/databaseConnection.php');
                         <figure class="clearfix fl">
                             <a href="http://sniish.ru" class="not-link-style">
                                 <div class="logo fl">
-                                    <img src="/../img/sniish-logo.png" class="logo-image fl" alt="Логотип СНИИСХ">
+                                    <img src="../img/sniish-logo.png" class="logo-image fl" alt="Логотип СНИИСХ">
                                     <div class="sniish_text fl">
                                         <p>Ставропольский</p>
                                         <p>НИИСХ</p>
@@ -79,7 +76,7 @@ require_once('../include/databaseConnection.php');
 
                     <div class="header-right fr">
                         <menu class="main-menu">
-                            <li><a class="special-link" href="manager/index.php">Редактировать доступ</a></li>
+                            <li><a class="special-link" href="../manager/index.php">Редактировать отображение</a></li>
                             <li><a href="index.php">Меню</a></li>
                             <li><a href="#">Выйти</a></li>
                         </menu>
@@ -296,9 +293,9 @@ require_once('../include/databaseConnection.php');
 </footer>
 
 
-<link rel="stylesheet" href="/../css/libs.css">
-<link rel="stylesheet" href="/../css/main.min.css">
-<script src="/../js/scripts.min.js"></script>
+<link rel="stylesheet" href="../css/libs.css">
+<link rel="stylesheet" href="../css/main.min.css">
+<script src="../js/scripts.min.js"></script>
 
 </body>
 </html>

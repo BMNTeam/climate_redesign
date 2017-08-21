@@ -1,5 +1,5 @@
 <?php
-require_once('/../../include/DB_itit.php');
+require_once($INCLUDE_ROOT .'/DB_itit.php');
 
 /**
  *
