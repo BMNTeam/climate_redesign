@@ -37,8 +37,8 @@
 
 
             //Count all precipitations
-            $precipitation['base_year']     += $arr1[$i];
-            $precipitation['current_year']  += $arr2[$i];
+            $precipitation['base_year']     = $arr1[$i];
+            $precipitation['current_year']  = $arr2[$i];
 
             // Line colors
             $first_line_color  = '#36c';
@@ -48,21 +48,24 @@
             ['<?php echo( $months[$i] );                        // Print month name
                 ?>',<? echo( $precipitation['base_year'] )      // Print first array elements
                 ?>, <?php                                       // Print tooltip for first year
-                    $precipitations_summary = $precipitation['base_year'];
+                    $precipitations_differences = $precipitation['base_year']-$precipitation['current_year'];
+                    $precipitation_base = $precipitation['base_year'];
                     $area  = $first_region['region_name'];
                     $years = $first_region['years'];
-                    ( $months[$i] == "Январь" ) ? $currentMonth="" : $currentMonth=$months[$i];
-                    echo("createCustomTooltip('$area', '$years', $precipitations_summary, '$currentMonth')");
+                    $period_name = 'базисного';
+                    $currentMonth=$months[$i];
+                    echo("createCustomTooltip('$area', '$years', $precipitation_base, $precipitations_differences, '$currentMonth', '$period_name')");
                 ?>, <?php                                       // First line color
                     echo( "'$first_line_color'" );
                 ?>, <?  echo( $precipitation['current_year'] ) //Print second array elements
                 ?>, <?php // Print tooltip for second year
-                    $precipitations_summary = $precipitation['current_year'];
+                    $precipitations_differences = $precipitation['current_year']-$precipitation['base_year'];
+	                $precipitation_current = $precipitation['current_year'];
                     $area  = $second_region['region_name'];
                     $years = $second_region['years'];
-                    $currentMonth = '';
-                    ($months[$i] == "Январь")?$currentMonth="":$currentMonth=$months[$i];
-                    echo("createCustomTooltip('$area', '$years', $precipitations_summary, '$currentMonth')");
+	                $period_name = 'отчетного';
+                    $currentMonth=$months[$i];
+                    echo("createCustomTooltip('$area', '$years',$precipitation_current, $precipitations_differences, '$currentMonth','$period_name')");
                 ?>, <?php // Second line color
                     echo ( "'$second_line_color'" );
                 ?>]<?echo($separator)                           //If it's the last element then don't add comma after
@@ -79,12 +82,12 @@
 
         // Set chart options
         var options = {
-            'title': "Осадки: <?php echo( $first_region[ 'region_name' ])?> <?php echo( $first_region[ 'years' ])?> в сравнении с <?php echo( $second_region[ 'region_name' ])?> <?php echo( $second_region[ 'years' ])?>",
+            'title': "Температура: <?php echo( $first_region[ 'region_name' ])?> <?php echo( $first_region[ 'years' ])?> в сравнении с <?php echo( $second_region[ 'region_name' ])?> <?php echo( $second_region[ 'years' ])?>",
             'width': 1500,
             'height': 600,
             legend: 'none',
             vAxis: {
-                title: 'Количество осадков, мм.'
+                title: 'Градусы цельсия'
             },
             tooltip: {isHtml: true},
             series: {
@@ -104,12 +107,13 @@
         };
 
         //Create view of the hovered element
-        function createCustomTooltip (area, years, differents, month){
+        function createCustomTooltip (area, years, precipitation, differences, month, period){
             var yearSeparator = '';
             (month == '') ? yearSeparator='' : yearSeparator=' - ';
             return  '<div style="padding:10px;">'+
                 '<h2>'+ area + ': ' + '<span>'+years+'</span></h2>'+
-                '<p style="font-size: 1.05rem;"> Сумма осадков Январь'+yearSeparator+month+': <i>'+differents+'мм.</i> </p>'+
+                '<p style="font-size: 1.05rem;"> Температура'+yearSeparator+month+': <b>'+precipitation+'°С.</b> </p>'+
+                '<p style="font-size: 1.05rem; margin-top: -15px;"> Отклонения от '+period+' периода: <b>'+differences+'°С.</b> </p>'+
                 '</div>'
         }
 

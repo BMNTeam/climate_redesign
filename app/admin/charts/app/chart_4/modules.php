@@ -8,7 +8,7 @@
  * @return void
  *
  */
-function createLineChart ( $first_region, $second_region, $arr1, $arr2)
+function createLineChartForTemperature ( $first_region, $second_region, $arr1, $arr2)
 {
     global $months;
 
