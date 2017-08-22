@@ -27,6 +27,12 @@
                 'current_year' => 0
             );
 
+            $sum_temperature = array (
+                'more_than_base_year' => 0,
+                'less_than_base_year' => 0
+
+            );
+
             //For each element in array create row in the GoogleChart
             for( $i = 0; $i < $number_of_months; $i++){ ?>
 
@@ -40,6 +46,8 @@
             $precipitation['base_year']     = $arr1[$i];
             $precipitation['current_year']  = $arr2[$i];
 
+            $sum_temperature_base_year += $arr1[$i];
+
             // Line colors
             $first_line_color  = '#36c';
             $second_line_color = '#f57c00';
@@ -52,7 +60,7 @@
                     $precipitation_base = $precipitation['base_year'];
                     $area  = $first_region['region_name'];
                     $years = $first_region['years'];
-                    $period_name = 'базисного';
+                    $period_name = 'отчетного';
                     $currentMonth=$months[$i];
                     echo("createCustomTooltip('$area', '$years', $precipitation_base, $precipitations_differences, '$currentMonth', '$period_name')");
                 ?>, <?php                                       // First line color
@@ -61,9 +69,18 @@
                 ?>, <?php // Print tooltip for second year
                     $precipitations_differences = $precipitation['current_year']-$precipitation['base_year'];
 	                $precipitation_current = $precipitation['current_year'];
+
+                    // Count sum in temperature array if value in current year more or less then in base
+                    if ( $precipitations_differences >= 0) {
+	                    $sum_temperature['more_than_base_year'] += $precipitation_current;
+                    } else {
+                        $sum_temperature['less_than_base_year'] += $precipitation_current;
+                    }
+
+
                     $area  = $second_region['region_name'];
                     $years = $second_region['years'];
-	                $period_name = 'отчетного';
+	                $period_name = 'базисного';
                     $currentMonth=$months[$i];
                     echo("createCustomTooltip('$area', '$years',$precipitation_current, $precipitations_differences, '$currentMonth','$period_name')");
                 ?>, <?php // Second line color
@@ -76,8 +93,8 @@
         ]);
         // Set variables section
         var precipitations = {
-            baseYearPrecipitation: <?php    echo($precipitation[ 'base_year' ]) ?>,
-            currentYearPrecipitation: <?php echo($precipitation[ 'current_year' ]) ?>
+            baseYearPrecipitation: <?php    echo($sum_temperature_base_year/$number_of_months) ?>,
+            currentYearPrecipitation: <?php echo($sum_temperature['more_than_base_year']/$number_of_months)             ?>
         };
 
         // Set chart options
@@ -87,7 +104,7 @@
             'height': 600,
             legend: 'none',
             vAxis: {
-                title: 'Градусы цельсия'
+                title: '°C'
             },
             tooltip: {isHtml: true},
             series: {

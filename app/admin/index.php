@@ -76,9 +76,8 @@ require_once('../include/databaseConnection.php');
 
                     <div class="header-right fr">
                         <menu class="main-menu">
-                            <li><a class="special-link" href="../manager/index.php">Редактировать отображение</a></li>
-                            <li><a href="index.php">Меню</a></li>
-                            <li><a href="#">Выйти</a></li>
+                            <li><a class="special-link" href="manager/index.php">Редактировать отображение</a></li>
+                            <li><a href="../index.php">Меню</a></li>
                         </menu>
                     </div><!--header right-->
 

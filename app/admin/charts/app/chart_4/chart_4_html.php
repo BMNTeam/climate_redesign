@@ -16,7 +16,7 @@
     ">
         <span id="allPrecipitationNumber" style="line-height: 2.5em; ">
             123
-        </span> мм.
+        </span> °C.
     </div>
 
     <div class="all-precipitation" id="summaryPrecipitationCurrentPeriod" style="
@@ -32,7 +32,7 @@
     ">
         <span id="allPrecipitationCurrentPeriodNumber" style="line-height: 2.5em; ">
             123
-        </span> мм.
+        </span> °C
     </div>
 
 
@@ -50,7 +50,7 @@
                     background-color: #36c;
                     border: 1px solid black;
                 "></div>
-                <span class="description" style="vertical-align: top;">- Осадки метеостанция <?php echo($first_region['region_name']); ?>, <?php echo($first_region['years']); ?></span>
+                <span class="description" style="vertical-align: top;">- Температура базового периода: <?php echo($first_region['region_name']); ?>, <?php echo($first_region['years']); ?></span>
             </div>
 
 
@@ -63,7 +63,7 @@
                     background-color: #f57c00;
                     border: 1px solid black;
                 "></div>
-                <span class="description" style="vertical-align: top;">- Осадки метеостанция <?php echo($second_region['region_name']); ?>, <?php echo($second_region['years']); ?></span>
+                <span class="description" style="vertical-align: top;">- Температура отчетного периода: <?php echo($second_region['region_name']); ?>, <?php echo($second_region['years']); ?></span>
             </div>
 
 
@@ -75,7 +75,7 @@
                     background-color: #36c;
                     border: 2px dashed black;
                 "></div>
-                <span class="description" style="vertical-align: top;">- Cуммарное количество <?php echo($first_region['region_name']); ?>, <?php echo($first_region['years']); ?></span>
+                <span class="description" style="vertical-align: top;">- Средняя температура базисного периода: <?php echo($first_region['region_name']); ?>, <?php echo($first_region['years']); ?></span>
             </div>
 
             <div class="legend--element" style="height: 20px; margin-bottom: 10px; margin-left: 15px;">
@@ -86,7 +86,7 @@
                     background-color: #f57c00;
                     border: 2px dashed black;
                 "></div>
-                <span class="description" style="vertical-align: top;">- суммарное количество осадков <?php echo($second_region['region_name']); ?>, <?php echo($second_region['years']); ?></span>
+                <span class="description" style="vertical-align: top;">- Средняя температура анализируемого периода выше значения базисного периода: <?php echo($second_region['region_name']); ?>, <?php echo($second_region['years']); ?></span>
             </div>
         </div>
 
