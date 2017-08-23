@@ -86,6 +86,7 @@
             vAxis: {
                 title: 'Количество осадков, мм.'
             },
+            fontName: 'roboto-light', // Font family
             tooltip: {isHtml: true},
             series: {
                 0: {
