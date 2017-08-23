@@ -1,42 +1,5 @@
-<div class="chart--wrapper" style="position: relative; font-family: Arial">
+<div class="chart--wrapper" style="position: relative;">
     <div id="chart_div"></div>
-
-
-
-    <div class="all-precipitation" id="summaryPrecipitation" style="
-        position: absolute;
-        width: 70px;
-        height: 35px;
-        display: none;
-        background-color: #398339;
-        border-radius: 10px;
-        border: 2px dashed black;
-        text-align: center;
-        color: #fff;
-    ">
-        <span id="allPrecipitationNumber" style="line-height: 2.5em; ">
-            123
-        </span> °C.
-    </div>
-
-    <div class="all-precipitation" id="summaryPrecipitationCurrentPeriod" style="
-        position: absolute;
-        width: 70px;
-        height: 35px;
-        display: none;
-        background-color: #da1416;
-        border-radius: 10px;
-        border: 2px dashed black;
-        text-align: center;
-        color: #fff;
-    ">
-        <span id="allPrecipitationCurrentPeriodNumber" style="line-height: 2.5em; ">
-            123
-        </span> °C
-    </div>
-
-
-
 
     <div class="legend" id="chartLegend" style="display: none; position: absolute;">
         <h3>Используемые обозначения: </h3>

@@ -14,24 +14,16 @@
         // Create the data table.
         var data = google.visualization.arrayToDataTable([
             ['Месяц',
-                'Текущий год',
-                {'type': 'string', 'role': 'tooltip', 'p': {'html': true}},
+                'Температура',
                 {role: 'style'},
-                'Предидущий',
-                {'type': 'string', 'role': 'tooltip', 'p': {'html': true}},
-                {role: 'style'}],
+                'Осадки',
+                {role: 'style'},
+                'Осадки2',
+                {role: 'style'},
+                'Осадки3',
+                {role: 'style'}
+                ],
             <?php
-
-            $precipitation = array(
-                'base_year' => 0,
-                'current_year' => 0
-            );
-
-            $sum_temperature = array (
-                'more_than_base_year' => 0,
-                'less_than_base_year' => 0
-
-            );
 
             //For each element in array create row in the GoogleChart
             for( $i = 0; $i < $number_of_months; $i++){ ?>
@@ -43,8 +35,10 @@
 
 
             //Count all precipitations
-            $precipitation['base_year']     = $arr1[$i];
-            $precipitation['current_year']  = $arr2[$i];
+            $temperature    = $arr1[$i];
+            $precipitation['original']  = $arr2[$i];
+            $precipitation['divided_by_2']  = $arr2[$i]/2;
+            $precipitation['divided_by_3']  = $arr2[$i]/3;
 
             $sum_temperature_base_year += $arr1[$i];
 
@@ -54,38 +48,19 @@
 
             ?>
             ['<?php echo( $months[$i] );                        // Print month name
-                ?>',<? echo( $precipitation['base_year'] )      // Print first array elements
-                ?>, <?php                                       // Print tooltip for first year
-                    $precipitations_differences = $precipitation['base_year']-$precipitation['current_year'];
-                    $precipitation_base = $precipitation['base_year'];
-                    $area  = $first_region['region_name'];
-                    $years = $first_region['years'];
-                    $period_name = 'анализируемого';
-                    $currentMonth=$months[$i];
-                    echo("createCustomTooltip('$area', '$years', $precipitation_base, $precipitations_differences, '$currentMonth', '$period_name')");
+                ?>',<? echo( $temperature )      // Print first array elements
                 ?>, <?php                                       // First line color
                     echo( "'$first_line_color'" );
-                ?>, <?  echo( $precipitation['current_year'] ) //Print second array elements
-                ?>, <?php // Print tooltip for second year
-                    $precipitations_differences = $precipitation['current_year']-$precipitation['base_year'];
-	                $precipitation_current = $precipitation['current_year'];
-
-                    // Count sum in temperature array if value in current year more or less then in base
-                    if ( $precipitations_differences >= 0) {
-	                    $sum_temperature['more_than_base_year'] += $precipitation_current;
-                    } else {
-                        $sum_temperature['less_than_base_year'] += $precipitation_current;
-                    }
-
-
-                    $area  = $second_region['region_name'];
-                    $years = $second_region['years'];
-	                $period_name = 'базисного';
-                    $currentMonth=$months[$i];
-                    echo("createCustomTooltip('$area', '$years',$precipitation_current, $precipitations_differences, '$currentMonth','$period_name')");
+                ?>, <?  echo( $precipitation['original'] ) //Print second array elements
                 ?>, <?php // Second line color
                     echo ( "'$second_line_color'" );
-                ?>]<?echo($separator)                           //If it's the last element then don't add comma after
+	            ?>, <?  echo( $precipitation['divided_by_2'] ) //Print second array elements
+	            ?>, <?php // Second line color
+	            ?>, <?  echo( $precipitation['divided_by_3'] ) //Print second array elements
+	            ?>, <?php // Second line color
+	            echo ( "'$second_line_color'" );
+	            ?>
+            ]<?echo($separator)                           //If it's the last element then don't add comma after
             ?>
             <?php
             }
@@ -103,22 +78,40 @@
             'width': 1500,
             'height': 600,
             legend: 'none',
-            vAxis: {
-                title: 'Температура °C'
+            vAxes: {
+              // Adds titles to each axis.
+              0: {title: 'Температура (Celsius)'},
+              1: {title: 'Осадки'}
             },
             fontName: 'roboto-light', // Font family
             tooltip: {isHtml: true},
             series: {
                 0: {
+                    targetAxisIndex: 0,
                     lineWidth: 3,
                     pointSize: 12,
                     visibleInLegend: false
                 },
                 1: {
                     // set the options on the second series
+                    targetAxisIndex: 1,
                     lineWidth: 3,
                     pointSize: 12,
                     visibleInLegend: false
+                },
+                2: {
+                  // set the options on the second series
+                  targetAxisIndex: 1,
+                  lineWidth: 3,
+                  pointSize: 12,
+                  visibleInLegend: false
+                },
+                3: {
+                    // set the options on the second series
+                  targetAxisIndex: 1,
+                  lineWidth: 3,
+                  pointSize: 12,
+                  visibleInLegend: false
                 }
             }
 
@@ -139,29 +132,7 @@
         function placeSummaryOverlay ( dataTable ) {
             var cli                         = this.getChartLayoutInterface();
             var chartArea                   = cli.getChartAreaBoundingBox();
-            var baseYearPrecipitation       = document.getElementById('allPrecipitationNumber');
-            var currentYearPrecipitation    = document.getElementById('allPrecipitationCurrentPeriodNumber');
             var legendElement               = document.getElementById('chartLegend');
-
-            console.dir(chartArea);
-
-            // Set summary positions
-            var summaryPrecipitation                = document.getElementById('summaryPrecipitation');
-            var summaryPrecipitationCurrentPeriod   = document.getElementById('summaryPrecipitationCurrentPeriod');
-
-            // Position current Year summary elements
-            summaryPrecipitationCurrentPeriod.style.left    = chartArea.left + chartArea.width - 100;
-            summaryPrecipitationCurrentPeriod.style.top     = chartArea.top;
-            summaryPrecipitationCurrentPeriod.style.display = 'block';
-
-            // Position base Year summary elements
-            summaryPrecipitation.style.left     = chartArea.left + 20;
-            summaryPrecipitation.style.top      = chartArea.top   ;
-            summaryPrecipitation.style.display  = 'block';
-
-            // Set overlay
-            baseYearPrecipitation.innerText     = precipitations.baseYearPrecipitation;
-            currentYearPrecipitation.innerText  = precipitations.currentYearPrecipitation;
 
             // Set legend position
             legendElement.style.left    = chartArea.left;

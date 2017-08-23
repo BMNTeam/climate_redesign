@@ -1,4 +1,4 @@
-<div class="chart--wrapper" style="position: relative; font-family: Arial">
+<div class="chart--wrapper" style="position: relative;">
     <div id="chart_div"></div>
 
 
