@@ -36,7 +36,7 @@
 
             //Count all precipitations
             $temperature    = $arr1[$i];
-            $precipitation['original']  = $arr2[$i];
+            $precipitation['original']  = ($arr2[$i] >= 120)?$arr2[$i]=120 : $arr2[$i] = $arr2[$i];
             $precipitation['divided_by_2']  = $arr2[$i]/2;
             $precipitation['divided_by_3']  = $arr2[$i]/3;
 
@@ -80,11 +80,11 @@
             legend: 'none',
             vAxes: {
               // Adds titles to each axis.
-              0: {title: 'Температура (Celsius)'},
-              1: {title: 'Осадки'}
+              0: {title: 'Температура (Celsius)', viewWindow: {min: -15, max: 60}},
+              1: {title: 'Осадки', viewWindow: {min: -30, max: 120}}
             },
             fontName: 'roboto-light', // Font family
-            tooltip: {isHtml: true},
+            tooltip: {trigger: 'none'},
             series: {
                 0: {
                     targetAxisIndex: 0,
