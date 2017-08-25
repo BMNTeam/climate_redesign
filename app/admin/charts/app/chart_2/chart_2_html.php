@@ -1,9 +1,9 @@
 <div class="chart--wrapper" style="position: relative;">
-    <div id="chart_div"></div>
+    <div id="special_div"></div>
 
 
 
-    <div class="all-precipitation" id="summaryPrecipitation" style="
+    <div class="all-precipitation" id="summaryPrecipitation2" style="
         position: absolute;
         width: 70px;
         height: 35px;
@@ -14,12 +14,12 @@
         text-align: center;
         color: #fff;
     ">
-        <span id="allPrecipitationNumber" style="line-height: 2.5em; ">
+        <span id="allPrecipitationNumber2" style="line-height: 2.5em; ">
             123
         </span> мм.
     </div>
 
-    <div class="all-precipitation" id="summaryPrecipitationCurrentPeriod" style="
+    <div class="all-precipitation" id="summaryPrecipitationCurrentPeriod2" style="
         position: absolute;
         width: 70px;
         height: 35px;
@@ -30,15 +30,12 @@
         text-align: center;
         color: #fff;
     ">
-        <span id="allPrecipitationCurrentPeriodNumber" style="line-height: 2.5em; ">
+        <span id="allPrecipitationCurrentPeriodNumber2" style="line-height: 2.5em; ">
             123
         </span> мм.
     </div>
 
-
-
-
-    <div class="legend" id="chartLegend" style="display: none; position: absolute;">
+    <div class="legend" id="chartLegend2" style="display: none; position: absolute;">
         <h3>Используемые обозначения: </h3>
 
         <div class="legends--wrapper">

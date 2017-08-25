@@ -17,7 +17,7 @@
                 'Текущий год',
                 {'type': 'string', 'role': 'tooltip', 'p': {'html': true}},
                 {role: 'style'},
-                'Предидущий',
+                'Предыдущий',
                 {'type': 'string', 'role': 'tooltip', 'p': {'html': true}},
                 {role: 'style'}],
             <?php
@@ -46,11 +46,13 @@
             $precipitation['base_year']     = $arr1[$i];
             $precipitation['current_year']  = $arr2[$i];
 
+	        require(__DIR__ .'/../fix_empty_values.php');
+
             $sum_temperature_base_year += $arr1[$i];
 
             // Line colors
-            $first_line_color  = '#398339';
-            $second_line_color = '#da1416';
+            $first_line_color  = '#06af2a';
+            $second_line_color = '#d60000';
 
             ?>
             ['<?php echo( $months[$i] );                        // Print month name
@@ -80,7 +82,7 @@
 
                     $area  = $second_region['region_name'];
                     $years = $second_region['years'];
-	                $period_name = 'базисного';
+	                $period_name = 'базового';
                     $currentMonth=$months[$i];
                     echo("createCustomTooltip('$area', '$years',$precipitation_current, $precipitations_differences, '$currentMonth','$period_name')");
                 ?>, <?php // Second line color
@@ -93,34 +95,36 @@
         ]);
         // Set variables section
         var precipitations = {
-            baseYearPrecipitation: <?php    echo($sum_temperature_base_year/$number_of_months) ?>,
-            currentYearPrecipitation: <?php echo($sum_temperature['more_than_base_year']/$number_of_months)             ?>
+            baseYearPrecipitation: <?php    echo( round( $sum_temperature_base_year/count($arr1), 2) ) ?>,
+            currentYearPrecipitation: <?php echo( round( $sum_temperature['more_than_base_year']/count($arr2),2) )             ?>
         };
 
         // Set chart options
         var options = {
-            'title': "Температура: <?php echo( $first_region[ 'region_name' ])?> <?php echo( $first_region[ 'years' ])?> в сравнении с <?php echo( $second_region[ 'region_name' ])?> <?php echo( $second_region[ 'years' ])?>",
-            'width': 1500,
+            'title': "Температура: м.ст. <?php echo( $first_region[ 'region_name' ])?> <?php echo( $first_region[ 'years' ])?> в сравнении с м.ст. <?php echo( $second_region[ 'region_name' ])?> <?php echo( $second_region[ 'years' ])?>",
+            'width': 1100,
             'height': 600,
             legend: 'none',
             vAxis: {
-                title: 'Температура °C'
+                title: 'Температура воздуха, °C'
             },
-            fontName: 'roboto-light', // Font family
             tooltip: {isHtml: true},
+            interpolateNulls: true,
             series: {
                 0: {
                     lineWidth: 3,
-                    pointSize: 12,
-                    visibleInLegend: false
+                    pointSize: 8,
+                    visibleInLegend: true
                 },
                 1: {
                     // set the options on the second series
                     lineWidth: 3,
-                    pointSize: 12,
-                    visibleInLegend: false
+                    pointSize: 8,
+                    visibleInLegend: true
                 }
-            }
+            },
+            fontName: 'roboto-light', // Font family
+            tooltip: {isHtml: true}
 
         };
 
@@ -128,10 +132,10 @@
         function createCustomTooltip (area, years, precipitation, differences, month, period){
             var yearSeparator = '';
             (month == '') ? yearSeparator='' : yearSeparator=' - ';
-            return  '<div style="padding:10px;">'+
-                '<h2>'+ area + ': ' + '<span>'+years+'</span></h2>'+
-                '<p style="font-size: 1.05rem;"> Температура'+yearSeparator+month+': <b>'+precipitation+'°С.</b> </p>'+
-                '<p style="font-size: 1.05rem; margin-top: -15px;"> Отклонения от '+period+' периода: <b>'+differences+'°С.</b> </p>'+
+            return  '<div style="padding:10px; width:340px">'+
+                '<p style="font-size: 1.6rem; text-align: center;"><b>Температура: м.ст. '+ area + '</b></p>'+
+                '<p style="font-size: 1.6rem;"> <i>'+month+yearSeparator+years+': <b>'+precipitation+'°С.</b></i> </p>'+
+                '<p style="font-size: 1.6rem; margin-top: -15px;"><i>Отклонение от '+period+' периода: <b>'+differences+'°С.</b></i></p>'+
                 '</div>'
         }
 
@@ -139,24 +143,25 @@
         function placeSummaryOverlay ( dataTable ) {
             var cli                         = this.getChartLayoutInterface();
             var chartArea                   = cli.getChartAreaBoundingBox();
-            var baseYearPrecipitation       = document.getElementById('allPrecipitationNumber');
-            var currentYearPrecipitation    = document.getElementById('allPrecipitationCurrentPeriodNumber');
-            var legendElement               = document.getElementById('chartLegend');
+            var baseYearPrecipitation       = document.getElementById('allPrecipitationNumber4');
+            var currentYearPrecipitation    = document.getElementById('allPrecipitationCurrentPeriodNumber4');
+            var legendElement               = document.getElementById('chartLegend4');
+            var fullChart                   = document.querySelector('.chart--wrapper');
 
             console.dir(chartArea);
 
             // Set summary positions
-            var summaryPrecipitation                = document.getElementById('summaryPrecipitation');
-            var summaryPrecipitationCurrentPeriod   = document.getElementById('summaryPrecipitationCurrentPeriod');
+            var summaryPrecipitation                = document.getElementById('summaryPrecipitation4');
+            var summaryPrecipitationCurrentPeriod   = document.getElementById('summaryPrecipitationCurrentPeriod4');
 
             // Position current Year summary elements
-            summaryPrecipitationCurrentPeriod.style.left    = chartArea.left + chartArea.width - 100;
-            summaryPrecipitationCurrentPeriod.style.top     = chartArea.top;
+            summaryPrecipitationCurrentPeriod.style.left    = chartArea.left + chartArea.width - 100 + 'px';
+            summaryPrecipitationCurrentPeriod.style.top     = chartArea.top + 'px';
             summaryPrecipitationCurrentPeriod.style.display = 'block';
 
             // Position base Year summary elements
-            summaryPrecipitation.style.left     = chartArea.left + 20;
-            summaryPrecipitation.style.top      = chartArea.top   ;
+            summaryPrecipitation.style.left     = chartArea.left + 20 + 'px';
+            summaryPrecipitation.style.top      = chartArea.top + 'px'   ;
             summaryPrecipitation.style.display  = 'block';
 
             // Set overlay
@@ -164,10 +169,16 @@
             currentYearPrecipitation.innerText  = precipitations.currentYearPrecipitation;
 
             // Set legend position
-            legendElement.style.left    = chartArea.left;
-            legendElement.style.top     = chartArea.top + chartArea.height + 50;
+            legendElement.style.left    = chartArea.left + 'px';
+            legendElement.style.top     = chartArea.top + chartArea.height + 50 + 'px';
             legendElement.style.display = 'block';
 
+            fixChartSize(legendElement, fullChart);
+
+        }
+
+        function fixChartSize( legendElement, fullChart ) {
+          fullChart.style.minHeight = fullChart.clientHeight + legendElement.clientHeight + 'px';
         }
 
 

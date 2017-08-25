@@ -17,7 +17,7 @@
                 'Текущий год',
                 {'type': 'string', 'role': 'tooltip', 'p': {'html': true}},
                 {role: 'style'},
-                'Предидущий',
+                'Предыдущий',
                 {'type': 'string', 'role': 'tooltip', 'p': {'html': true}},
                 {role: 'style'}],
             <?php
@@ -39,6 +39,10 @@
             //Count all precipitations
             $precipitation['base_year']     += $arr1[$i];
             $precipitation['current_year']  += $arr2[$i];
+
+            //If no values send then don't
+	        ($i >= count($arr1)) ? $precipitation['base_year']      = 'null' : '';
+	        ($i >= count($arr2)) ? $precipitation['current_year']   = 'null' : '';
 
             // Line colors
             $first_line_color  = '#36c';
@@ -80,13 +84,20 @@
         // Set chart options
         var options = {
             'title': "Осадки: <?php echo( $first_region[ 'region_name' ])?> <?php echo( $first_region[ 'years' ])?> в сравнении с <?php echo( $second_region[ 'region_name' ])?> <?php echo( $second_region[ 'years' ])?>",
-            'width': 1500,
+            'width': 1100,
             'height': 600,
             legend: 'none',
+            focusTarget: 'datum',
+            annotations: {
+                highContrast: true,
+                textStyle: {
+                    bold: true
+                }
+            },
             vAxis: {
                 title: 'Количество осадков, мм.'
             },
-            fontName: 'roboto-light', // Font family
+            interpolateNulls: true,
             tooltip: {isHtml: true},
             series: {
                 0: {
@@ -100,7 +111,9 @@
                     pointSize: 12,
                     visibleInLegend: false
                 }
-            }
+            },
+            fontName: 'roboto-light', // Font family
+            tooltip: {isHtml: true}
 
         };
 
@@ -108,9 +121,9 @@
         function createCustomTooltip (area, years, differents, month){
             var yearSeparator = '';
             (month == '') ? yearSeparator='' : yearSeparator=' - ';
-            return  '<div style="padding:10px;">'+
-                '<h2>'+ area + ': ' + '<span>'+years+'</span></h2>'+
-                '<p style="font-size: 1.05rem;"> Сумма осадков Январь'+yearSeparator+month+': <i>'+differents+'мм.</i> </p>'+
+            return  '<div style="padding:10px; width:300px;">'+
+                '<p style="font-size: 1.6rem;"><b>'+ area + ': ' +years+'</b></p>'+
+                '<p style="font-size: 1.6rem;"><i>Сумма осадков Январь'+yearSeparator+month+': '+differents+'мм.</i> </p>'+
                 '</div>'
         }
 
@@ -118,15 +131,15 @@
         function placeSummaryOverlay ( dataTable ) {
             var cli                         = this.getChartLayoutInterface();
             var chartArea                   = cli.getChartAreaBoundingBox();
-            var baseYearPrecipitation       = document.getElementById('allPrecipitationNumber');
-            var currentYearPrecipitation    = document.getElementById('allPrecipitationCurrentPeriodNumber');
-            var legendElement               = document.getElementById('chartLegend');
+            var baseYearPrecipitation       = document.getElementById('allPrecipitationNumber2');
+            var currentYearPrecipitation    = document.getElementById('allPrecipitationCurrentPeriodNumber2');
+            var legendElement               = document.getElementById('chartLegend2');
 
             console.dir(chartArea);
 
             // Set summary positions
-            var summaryPrecipitation                = document.getElementById('summaryPrecipitation');
-            var summaryPrecipitationCurrentPeriod   = document.getElementById('summaryPrecipitationCurrentPeriod');
+            var summaryPrecipitation                = document.getElementById('summaryPrecipitation2');
+            var summaryPrecipitationCurrentPeriod   = document.getElementById('summaryPrecipitationCurrentPeriod2');
 
             // Position current Year summary elements
             summaryPrecipitationCurrentPeriod.style.left    = chartArea.left + chartArea.width - 100;
@@ -151,7 +164,7 @@
 
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.LineChart(document.getElementById('special_div'));
         google.visualization.events.addListener(chart, 'ready',
             placeSummaryOverlay.bind(chart, data));
 

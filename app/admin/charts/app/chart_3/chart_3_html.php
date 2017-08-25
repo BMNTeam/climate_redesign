@@ -5,14 +5,16 @@
 
     <div class="all-precipitation" id="summaryPrecipitation" style="
         position: absolute;
-        width: 70px;
+        width: 80px;
         height: 35px;
         display: none;
-        background-color: #D32F2F;
+        background-color: #de2324;
         border-radius: 10px;
-        border: 2px dashed black;
+        border: 1px solid black;
         text-align: center;
-        color: #fff;
+        vertical-align:  middle;
+        font-weight: bold;
+        color: #000;
     ">
         <span id="allPrecipitationNumber" style="line-height: 2.5em; ">
             1500
@@ -31,7 +33,7 @@
                     display: inline-block;
                     width: 20px;
                     height: 20px;
-                    background: linear-gradient(90deg, #36c, #f57c00);
+                    background: linear-gradient(90deg, #d87a1a, #0c108c);
                     border: 1px solid black;
                 "></div>
                 <span class="description" style="vertical-align: top;">- Гидротермический коэффициент <?php echo($first_region['region_name']); ?>, <?php echo($first_region['years']); ?></span>
@@ -44,9 +46,11 @@
                     display: inline-block;
                     width: 20px;
                     height: 20px;
-                    background-color: #D32F2F;
-                    border: 1px dashed black;
-                "></div>
+                    background-color: #de2324;
+                    border: 1px solid black;
+                ">
+
+                </div>
                 <span class="description" style="vertical-align: top;">- Сумма активных температур <?php echo($first_region['region_name']); ?>, <?php echo($first_region['years']); ?></span>
             </div>
 

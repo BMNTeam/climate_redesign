@@ -16,8 +16,6 @@
             ['Месяц',
                 'Температура',
                 {role: 'style'},
-                'Осадки',
-                {role: 'style'},
                 'Осадки2',
                 {role: 'style'},
                 'Осадки3',
@@ -36,29 +34,28 @@
 
             //Count all precipitations
             $temperature    = $arr1[$i];
-            $precipitation['original']  = ($arr2[$i] >= 120)?$arr2[$i]=120 : $arr2[$i] = $arr2[$i];
+            $precipitation['original']  = ($arr2[$i] >= 120) ? $arr2[$i]=120 : $arr2[$i] = $arr2[$i];
             $precipitation['divided_by_2']  = $arr2[$i]/2;
             $precipitation['divided_by_3']  = $arr2[$i]/3;
 
             $sum_temperature_base_year += $arr1[$i];
 
             // Line colors
-            $first_line_color  = '#398339';
-            $second_line_color = '#da1416';
+            $first_line_color  = '#fd0b09';
+            $second_line_color = '#005fed';
+            $third_line_color  = '#bceefb';
 
             ?>
             ['<?php echo( $months[$i] );                        // Print month name
                 ?>',<? echo( $temperature )      // Print first array elements
                 ?>, <?php                                       // First line color
                     echo( "'$first_line_color'" );
-                ?>, <?  echo( $precipitation['original'] ) //Print second array elements
-                ?>, <?php // Second line color
-                    echo ( "'$second_line_color'" );
 	            ?>, <?  echo( $precipitation['divided_by_2'] ) //Print second array elements
 	            ?>, <?php // Second line color
+	                echo( "'$second_line_color'" );
 	            ?>, <?  echo( $precipitation['divided_by_3'] ) //Print second array elements
 	            ?>, <?php // Second line color
-	            echo ( "'$second_line_color'" );
+	            echo ( "'$third_line_color'" );
 	            ?>
             ]<?echo($separator)                           //If it's the last element then don't add comma after
             ?>
@@ -74,14 +71,14 @@
 
         // Set chart options
         var options = {
-            'title': "Температура: <?php echo( $first_region[ 'region_name' ])?> <?php echo( $first_region[ 'years' ])?> в сравнении с <?php echo( $second_region[ 'region_name' ])?> <?php echo( $second_region[ 'years' ])?>",
+            'title': "Климадиаграмма: <?php echo( $first_region[ 'region_name' ])?> период <?php echo( $first_region[ 'years' ])?>",
             'width': 1500,
             'height': 600,
             legend: 'none',
             vAxes: {
               // Adds titles to each axis.
-              0: {title: 'Температура (Celsius)', viewWindow: {min: -15, max: 60}},
-              1: {title: 'Осадки', viewWindow: {min: -30, max: 120}}
+              0: {title: 'Температура °C', viewWindow: {min: -15, max: 60}},
+              1: {title: 'Осадки мм.', viewWindow: {min: -30, max: 120}}
             },
             fontName: 'roboto-light', // Font family
             tooltip: {trigger: 'none'},
@@ -89,28 +86,22 @@
                 0: {
                     targetAxisIndex: 0,
                     lineWidth: 3,
-                    pointSize: 12,
+                    pointSize: 4,
                     visibleInLegend: false
                 },
                 1: {
                     // set the options on the second series
                     targetAxisIndex: 1,
                     lineWidth: 3,
-                    pointSize: 12,
+                    pointSize: 4,
                     visibleInLegend: false
                 },
                 2: {
                   // set the options on the second series
                   targetAxisIndex: 1,
                   lineWidth: 3,
-                  pointSize: 12,
-                  visibleInLegend: false
-                },
-                3: {
-                    // set the options on the second series
-                  targetAxisIndex: 1,
-                  lineWidth: 3,
-                  pointSize: 12,
+                  pointSize: 4,
+                  lineDashStyle: [4, 1],
                   visibleInLegend: false
                 }
             }

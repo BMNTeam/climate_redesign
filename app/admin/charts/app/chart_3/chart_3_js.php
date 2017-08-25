@@ -31,15 +31,15 @@
             // Otherwise another
             if ($arr1[$i] <= 0.6) {
 
-                $second_bar_color = '#f57c00';
+                $second_bar_color = '#d87a1a';
             } else {
-                $second_bar_color = '#36c';
+                $second_bar_color = '#0c108c';
             }
 
             // GTK coefficient estimates part
             $gtk_wet_conditions = '';
 
-            if ($arr1[$i] >= 0.5 && $arr1[$i] <= 0.7 || $arr1[$i] < 0.5) {
+            if (($arr1[$i] >= 0.5 && $arr1[$i] <= 0.7) || ($arr1[$i] < 0.5 && $arr1[$i] > 0.0)) {
                 $gtk_wet_conditions = 'Очень засушливые';
             } elseif ($arr1[$i] >= 0.7 && $arr1[$i] <= 0.9) {
                 $gtk_wet_conditions = 'Засушливые';
@@ -49,6 +49,8 @@
                 $gtk_wet_conditions = 'Умеренно влажные';
             } elseif ($arr1[$i] > 1.3) {
                 $gtk_wet_conditions = 'Избыточно влажные';
+            } elseif ($arr1[$i] == 0.0) {
+                $gtk_wet_conditions = 'Невозможно оценить';
             }
             // END Gtk coefficient part
 
@@ -78,7 +80,7 @@
         // Set chart options
         var options = {
             'title': "Гидротермический коэффициент '<?php echo($first_region['region_name'])?> <?php echo($first_region['years'])?>'",
-            'width': 1120,
+            'width': 1100,
             'height': 600,
             legend: 'none',
             focusTarget: 'datum',
@@ -94,8 +96,8 @@
         function createCustomTooltip (differents, gtk_wet_conditions){
 
             return  '<div style="padding:10px; ">'+
-                        '<p style="font-size: 1.75rem; text-align: center;"> ГТК: <i>'+differents+'</i> </p>'+
-                        '<h5 style="text-align: center"> Условия: <b>'+ gtk_wet_conditions + '</b></h5>'+
+                        '<p style="font-size: 1.6rem; text-align: center;"><b> ГТК: '+differents+'</b> </p>'+
+                        '<p style="font-size: 1.6rem; text-align: center;"><i>Условия: '+ gtk_wet_conditions + '</i></p>'+
                     '</div>';
         }
 

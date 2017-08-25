@@ -15,6 +15,7 @@ function createLineChart ( $first_region, $second_region, $arr1, $arr2)
     // Annotations work only on previous version of Google Charts !!!
 
     $first_region = $first_region;
+    $second_region = $second_region;
 
     $number_of_months = 0;
 
@@ -27,8 +28,8 @@ function createLineChart ( $first_region, $second_region, $arr1, $arr2)
         $number_of_months = count($arr2);
     }
     ?>
-
-    <?php require_once(__DIR__ .'/../remap_array.php'); ?>
+    
+    <?php require(__DIR__ .'/../remap_array.php'); ?>
     <?php require_once('chart_2_html.php'); ?>
     <?php require_once('chart_2_js.php'); ?>
 
