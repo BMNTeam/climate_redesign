@@ -6,7 +6,7 @@ if( ! isset( $db )){
     if ($is_test_server){
 
         // Initiate PDO library with options
-        $db = new PDO('mysql:host=localhost;dbname=c0678_sniish;charset=utf8mb4', 'root', '');
+        $db = new PDO('mysql:host=localhost;dbname=c0678_sniish;charset=utf8', 'root', 'root');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
@@ -19,15 +19,17 @@ if( ! isset( $db )){
          */
 
         try {
-            $db = new PDO ('mysql:host=localhost; dbname=c0678_sniish; charset=utf8mb4', 'c0678_sniish', 'stari');
+            $db = new PDO ('mysql:host=localhost; dbname=climate.mshsk.ru; charset=utf8', 'user_sniish', 'B7h6H7f1');
 
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
         }
 
+
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        $db->exec("SET NAMES 'utf8'");
     }
 
 

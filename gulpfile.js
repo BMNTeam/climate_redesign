@@ -22,7 +22,8 @@ gulp.task('common-js', function() {
 		])
 	.pipe(concat('common.min.js'))
 	//.pipe(uglify())  //Минимизировать CSS
-	.pipe(gulp.dest('app/js'));
+	.pipe(gulp.dest('app/js')) // first default location
+	.pipe(gulp.dest('/Users/maksimbarsukov/PhpstormProjects/climate.sniish.ru/js')); // second production location
 });
 
 gulp.task('css', function(){
@@ -37,8 +38,7 @@ gulp.task('css', function(){
 gulp.task('js', ['common-js'], function() {
 	return gulp.src([
 		'app/libs/jquery/dist/jquery.min.js',
-		'app/libs/bootstrap-grid/bootstrap.min.js',
-		'app/js/common.min.js', // Всегда в конце
+		'app/libs/bootstrap-grid/bootstrap.min.js'
 		])
 	.pipe(concat('scripts.min.js'))
 	// .pipe(uglify()) // Минимизировать весь js (на выбор)
@@ -48,7 +48,7 @@ gulp.task('js', ['common-js'], function() {
 
 gulp.task('browser-sync', function() {
 	browserSync({
-		proxy: "agroclimate.new.design.com:81",
+		proxy: "http://agroclimate.com:8888",
 
 		notify: false
 		// tunnel: true,

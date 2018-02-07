@@ -34,11 +34,10 @@
 
             //Count all precipitations
             $temperature    = $arr1[$i];
-            $precipitation['original']  = ($arr2[$i] >= 120) ? $arr2[$i]=120 : $arr2[$i] = $arr2[$i];
-            $precipitation['divided_by_2']  = $arr2[$i]/2;
-            $precipitation['divided_by_3']  = $arr2[$i]/3;
+            $precipitation['original']  = ($arr2[$i] >= 80) ? $arr2[$i]=80 : $arr2[$i] = $arr2[$i];
+            $precipitation['divided_by_2']  = $arr2[$i];
+            ( empty($arr2[$i]) ) ? $precipitation['divided_by_3'] = '': $precipitation['divided_by_3']  = $arr2[$i]/1.5;
 
-            $sum_temperature_base_year += $arr1[$i];
 
             // Line colors
             $first_line_color  = '#fd0b09';
@@ -63,22 +62,18 @@
             }
             ?>
         ]);
-        // Set variables section
-        var precipitations = {
-            baseYearPrecipitation: <?php    echo($sum_temperature_base_year/$number_of_months) ?>,
-            currentYearPrecipitation: <?php echo($sum_temperature['more_than_base_year']/$number_of_months)             ?>
-        };
+
 
         // Set chart options
         var options = {
             'title': "Климадиаграмма: <?php echo( $first_region[ 'region_name' ])?> период <?php echo( $first_region[ 'years' ])?>",
-            'width': 1500,
+            'width': 1100,
             'height': 600,
             legend: 'none',
             vAxes: {
               // Adds titles to each axis.
-              0: {title: 'Температура °C', viewWindow: {min: -15, max: 60}},
-              1: {title: 'Осадки мм.', viewWindow: {min: -30, max: 120}}
+              0: {title: 'Температура воздуха, °C', viewWindow: {min: -15, max: 40}},
+              1: {title: 'Количество осадков, мм.', viewWindow: {min: -30, max: 80}}
             },
             fontName: 'roboto-light', // Font family
             tooltip: {trigger: 'none'},
@@ -86,21 +81,21 @@
                 0: {
                     targetAxisIndex: 0,
                     lineWidth: 3,
-                    pointSize: 4,
+                    pointSize: 5,
                     visibleInLegend: false
                 },
                 1: {
                     // set the options on the second series
                     targetAxisIndex: 1,
                     lineWidth: 3,
-                    pointSize: 4,
+                    pointSize: 5,
                     visibleInLegend: false
                 },
                 2: {
                   // set the options on the second series
                   targetAxisIndex: 1,
                   lineWidth: 3,
-                  pointSize: 4,
+                  pointSize: 0,
                   lineDashStyle: [4, 1],
                   visibleInLegend: false
                 }
@@ -108,28 +103,26 @@
 
         };
 
-        //Create view of the hovered element
-        function createCustomTooltip (area, years, precipitation, differences, month, period){
-            var yearSeparator = '';
-            (month == '') ? yearSeparator='' : yearSeparator=' - ';
-            return  '<div style="padding:10px;">'+
-                '<h2>'+ area + ': ' + '<span>'+years+'</span></h2>'+
-                '<p style="font-size: 1.05rem;"> Температура'+yearSeparator+month+': <b>'+precipitation+'°С.</b> </p>'+
-                '<p style="font-size: 1.05rem; margin-top: -15px;"> Отклонения от '+period+' периода: <b>'+differences+'°С.</b> </p>'+
-                '</div>'
-        }
+
 
         // Overlay function, work when Chart is ready
         function placeSummaryOverlay ( dataTable ) {
             var cli                         = this.getChartLayoutInterface();
             var chartArea                   = cli.getChartAreaBoundingBox();
             var legendElement               = document.getElementById('chartLegend');
+            var fullChart                   = document.querySelector('.chart--wrapper');
 
             // Set legend position
-            legendElement.style.left    = chartArea.left;
-            legendElement.style.top     = chartArea.top + chartArea.height + 50;
+            legendElement.style.left    = chartArea.left + 'px';
+            legendElement.style.top     = chartArea.top + chartArea.height + 50 + 'px';
             legendElement.style.display = 'block';
 
+          fixChartSize(legendElement, fullChart);
+
+        }
+
+        function fixChartSize( legendElement, fullChart ) {
+          fullChart.style.minHeight = fullChart.clientHeight + legendElement.clientHeight + 'px';
         }
 
 

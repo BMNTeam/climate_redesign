@@ -86,7 +86,7 @@
                     background-color: #d60000;
                     border: 2px dashed black;
                 "></div>
-                <span class="description" style="vertical-align: top;">- Средняя температура анализируемого периода выше значения базисного периода: <?php echo($second_region['region_name']); ?>, <?php echo($second_region['years']); ?></span>
+                <span class="description" style="vertical-align: top;">- Средняя температура анализируемого периода: <?php echo($second_region['region_name']); ?>, <?php echo($second_region['years']); ?></span>
             </div>
         </div>
 

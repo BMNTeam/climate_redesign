@@ -60,6 +60,7 @@
 <link rel="stylesheet" href="css/libs.css">
 <link rel="stylesheet" href="css/main.min.css">
 <script src="js/scripts.min.js"></script>
+<script src="js/common.min.js"></script>
 
 </body>
 </html>

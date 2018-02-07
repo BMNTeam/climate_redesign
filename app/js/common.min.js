@@ -41,7 +41,6 @@ $(function() {
                 weatherInfo.createdTime = Date.now();
                 weatherInfo.temperature = temperature;
 
-                console.dir(response);
                 localStorage.setItem('weatherInfo', JSON.stringify(weatherInfo));
 
                 setWetherToUi(temperature);
@@ -71,7 +70,7 @@ $(function() {
     var self = $(this);
     if (self.hasClass('checked')) {
       self.removeClass('checked');
-      self.attr('value', 'выделить все')
+      self.attr('value', 'выделить все');
       $('input[type=checkbox]').prop('checked', false);
     } else {
       self.addClass('checked');
@@ -123,7 +122,40 @@ $(function() {
 
 
 
+//END Registration form
+  var questionsForm = document.getElementById('questions_form');
+  if ( questionsForm !== undefined && questionsForm !== null) {
+    questionsForm.addEventListener('submit', function(e){
+      e.preventDefault();
 
+      var url = questionsForm.action;
+      var xhr = new XMLHttpRequest();
+      var formData = new FormData(questionsForm);
+
+      function listenToRequest (evt) {
+        var questionResponse = '';
+
+        //Show success message
+        questionResponse = document.getElementById('question_response');
+        questionResponse.className = questionResponse.className.replace('hidden', '');
+
+        //Clear the form after success submitting
+        for (var i = 0; i<= questionsForm.elements.length; i++){
+          if(questionsForm.elements[i] !== undefined  && questionsForm.elements[i].type != 'submit') {
+            questionsForm.elements[i].value = '';
+          }
+        }
+      }
+
+      xhr.addEventListener('load', listenToRequest);
+      xhr.open("POST", url);
+      xhr.send(formData);
+    });
+  }
+
+
+
+  //Begin questions form
 
 
 

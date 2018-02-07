@@ -27,11 +27,11 @@
                 'current_year' => 0
             );
 
-            $sum_temperature = array (
+            /*$sum_temperature = array (
                 'more_than_base_year' => 0,
                 'less_than_base_year' => 0
 
-            );
+            );*/
 
             //For each element in array create row in the GoogleChart
             for( $i = 0; $i < $number_of_months; $i++){ ?>
@@ -49,6 +49,7 @@
 	        require(__DIR__ .'/../fix_empty_values.php');
 
             $sum_temperature_base_year += $arr1[$i];
+            $sum_temperature_current_year += $arr2[$i];
 
             // Line colors
             $first_line_color  = '#06af2a';
@@ -73,11 +74,11 @@
 	                $precipitation_current = $precipitation['current_year'];
 
                     // Count sum in temperature array if value in current year more or less then in base
-                    if ( $precipitations_differences >= 0) {
+                    /*if ( $precipitations_differences >= 0) {
 	                    $sum_temperature['more_than_base_year'] += $precipitation_current;
                     } else {
                         $sum_temperature['less_than_base_year'] += $precipitation_current;
-                    }
+                    }*/
 
 
                     $area  = $second_region['region_name'];
@@ -96,7 +97,7 @@
         // Set variables section
         var precipitations = {
             baseYearPrecipitation: <?php    echo( round( $sum_temperature_base_year/count($arr1), 2) ) ?>,
-            currentYearPrecipitation: <?php echo( round( $sum_temperature['more_than_base_year']/count($arr2),2) )             ?>
+            currentYearPrecipitation: <?php echo( round( $sum_temperature_current_year/count($arr2),2) )             ?>
         };
 
         // Set chart options
